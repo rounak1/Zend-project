@@ -1,0 +1,22 @@
+<section class="content">
+<div class="box box-primary">
+    <div class="box-header">
+       <h1 class="page-heading border-bottom">Edit Job Industry</h1>
+    </div><!-- /.box-header -->
+    <!-- form start -->
+    <form data-toggle="validator" role="form" method="post" >
+        <div class="box-body">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Job Industry</label>
+                <input type="name" name="jcname" class="form-control" id="name" value="<?php echo $this->jobIndustry->name; ?>" placeholder="Job Industry name" autofocus required>
+            </div>
+
+
+            <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Update</button>
+                <a class="btn btn-default" href="<?php echo $this->serverUrl()."/admin/Jobindustry";?>" role="button">Back</a>
+            </div>
+        </div>
+    </form>
+</div><!-- /.box -->
+</section>

@@ -1,0 +1,215 @@
+<?php
+
+use Carbon\Carbon; ?>
+
+<div class="hidden-xs common_google_ads t1-position-ad">
+    <!-- /85406138/Chakri_Articles_T1_970x90 -->
+    <div id='div-gpt-ad-1444651027888-0'>
+        <script type='text/javascript'>
+            googletag.cmd.push(function() {
+                googletag.display('div-gpt-ad-1444651027888-0');
+            });
+        </script>
+    </div>
+</div>
+
+<div class="col-xs-12 col-sm-12 col-md-12 about_us_page_container special_page_for_ad">
+    <div class="col-xs-12 col-sm-7 col-md-7">
+        <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse event_menu">
+            <ul class="nav navbar-nav event_menu_a">
+                <li><a href="/event" >All Events</a></li>
+                <li><a href="/eventarchives" id="act_evt" class="active_event">Events Archive</a></li>
+                <li><a href="/eventregistration">Online Registration </a></li>
+                <li><a href="/contact" target="_blank">Contact Us</a></li>
+            </ul>
+        </div> 
+    </div>
+    <div class="clearfix"></div>
+    <div class="col-xs-12 col-sm-7 col-md-7 evt_dle">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <tr class="evt_tbl_tle">
+                    <td colspan="2">Event Title</td>
+                    <td>Program Type</td>
+                    <td>Venue</td>
+                    <td>Start Date</td>
+                </tr>
+                <tbody id="myTable">
+<?php foreach ($this->events as $event): ?>
+                        <tr><?php //echo $event["evt_id"];  ?>
+                            <td height="80" align="left" valign="top" style="padding-left: 0;">
+                                <img src="<?php echo ($event["event_logo"] != NULL) ? "images/event/" . $event["event_logo"] : "img/default.jpg"; ?>" width="50" height="50">
+                            </td>
+                            <td align="left" valign="top" class="evt_tle">
+                                <a href="/eventdetail/<?php echo $id = $event["id"]; ?>"><?php echo $event["event_title"]; ?></a><br />
+                                <span class="evt_conduct_by">-<?php echo $event["event_conduct_by"]; ?></span>
+                            </td>
+                            <td align="left" valign="top"><?php echo $event["program_type"]; ?></td>
+                            <td align="left" valign="top"><?php echo $event["venue"]; ?></td>
+                            <td align="left" valign="top">
+                                <?php
+                                $dt = Carbon::createFromFormat('Y-m-d', $event["event_date"]);
+                                echo $dt->toFormattedDateString();
+                                ?><br/>
+                                <!--                                <a href="/eventDetail">
+                                                                    <button class="btn btn-default evt_btn">Details</button>
+                                                                </a></td>-->
+                        </tr>
+<?php endforeach; ?>
+                </tbody>
+            </table>   
+        </div>
+        <div class="col-md-12 text-right">
+            <ul class="pagination_evt pagination pagination-sm" id="myPager"></ul>
+        </div>
+    </div>
+    
+    <div class="col-md-5 about_right_ad_container pull-right">
+            <div class="hidden-xs common_google_ads no_top_margin">
+                <!-- /85406138/Chakri_Articles_R1_336x280 -->
+                <div id='div-gpt-ad-1444719776818-0' style='height:280px; width:336px;'>
+                    <script type='text/javascript'>
+                        googletag.cmd.push(function() {
+                            googletag.display('div-gpt-ad-1444719776818-0');
+                        });
+                    </script>
+                </div>
+
+            </div>
+
+            <div class="hidden-xs common_google_ads"> 
+                <!-- /85406138/Chakri_Articles_F1_300x600 -->
+                <div id='div-gpt-ad-1444719812009-0' style='height:600px; width:300px;'>
+                    <script type='text/javascript'>
+                        googletag.cmd.push(function() {
+                            googletag.display('div-gpt-ad-1444719812009-0');
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div> 
+    
+</div>
+
+<div class="hidden-xs col-sm-12 col-md-12 common_google_ads">
+    <!-- /85406138/Chakri_About-Policy-Terms_B2_970x90 -->
+    <div id='div-gpt-ad-1444720307947-0'>
+        <script type='text/javascript'>
+            googletag.cmd.push(function() {
+                googletag.display('div-gpt-ad-1444720307947-0');
+            });
+        </script>
+    </div>
+</div>
+
+<script>
+    $.fn.pageMe = function(opts) {
+        var $this = this,
+                defaults = {
+                    perPage: 7,
+                    showPrevNext: false,
+                    hidePageNumbers: false
+                },
+        settings = $.extend(defaults, opts);
+
+        var listElement = $this;
+        var perPage = settings.perPage;
+        var children = listElement.children();
+        var pager = $('.pager');
+
+        if (typeof settings.childSelector != "undefined") {
+            children = listElement.find(settings.childSelector);
+        }
+
+        if (typeof settings.pagerSelector != "undefined") {
+            pager = $(settings.pagerSelector);
+        }
+
+        var numItems = children.size();
+        var numPages = Math.ceil(numItems / perPage);
+
+        pager.data("curr", 0);
+
+        if (settings.showPrevNext) {
+            $('<li><a href="#" class="prev_link">«</a></li>').appendTo(pager);
+        }
+
+        var curr = 0;
+        while (numPages > curr && (settings.hidePageNumbers == false)) {
+            $('<li><a href="#" class="page_link">' + (curr + 1) + '</a></li>').appendTo(pager);
+            curr++;
+        }
+
+        if (settings.showPrevNext) {
+            $('<li><a href="#" class="next_link">»</a></li>').appendTo(pager);
+        }
+
+        pager.find('.page_link:first').addClass('active');
+        pager.find('.prev_link').hide();
+        if (numPages <= 1) {
+            pager.find('.next_link').hide();
+        }
+        pager.children().eq(1).addClass("active");
+
+        children.hide();
+        children.slice(0, perPage).show();
+
+        pager.find('li .page_link').click(function() {
+            var clickedPage = $(this).html().valueOf() - 1;
+            goTo(clickedPage, perPage);
+            return false;
+        });
+        pager.find('li .prev_link').click(function() {
+            previous();
+            return false;
+        });
+        pager.find('li .next_link').click(function() {
+            next();
+            return false;
+        });
+
+        function previous() {
+            var goToPage = parseInt(pager.data("curr")) - 1;
+            goTo(goToPage);
+        }
+
+        function next() {
+            goToPage = parseInt(pager.data("curr")) + 1;
+            goTo(goToPage);
+        }
+
+        function goTo(page) {
+            var startAt = page * perPage,
+                    endOn = startAt + perPage;
+
+            children.css('display', 'none').slice(startAt, endOn).show();
+
+            if (page >= 1) {
+                pager.find('.prev_link').show();
+            }
+            else {
+                pager.find('.prev_link').hide();
+            }
+
+            if (page < (numPages - 1)) {
+                pager.find('.next_link').show();
+            }
+            else {
+                pager.find('.next_link').hide();
+            }
+
+            pager.data("curr", page);
+            pager.children().removeClass("active");
+            pager.children().eq(page + 1).addClass("active");
+
+        }
+    };
+
+    $(document).ready(function() {
+
+        $('#myTable').pageMe({pagerSelector: '#myPager', showPrevNext: true, hidePageNumbers: false, perPage: 4});
+
+    });
+</script>

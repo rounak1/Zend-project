@@ -1,0 +1,686 @@
+<?php
+
+use Carbon\Carbon; ?> 
+
+<div class="col-xs-12 col-sm-12 col-md-12 sponsored_logo_container">        
+    <a href="#"><img src="images/sponsor-logo-1.jpg" alt="1" class="sponsor_logo_img img-responsive center-block" /></a>       
+    <a href="#"><img src="images/sponsor-logo-2.png" alt="1" class="sponsor_logo_img img-responsive center-block" /></a>       
+    <a href="#"><img src="images/sponsor-logo-3.jpg" alt="1" class="sponsor_logo_img img-responsive center-block" /></a>       
+    <a href="#"><img src="images/sponsor-logo-4.jpg" alt="1" class="sponsor_logo_img img-responsive center-block" /></a>       
+    <a href="#"><img src="images/sponsor-logo-5.png" alt="1" class="sponsor_logo_img img-responsive center-block" /></a>        
+    <a href="#"><img src="images/sponsor-logo-6.jpg" alt="1" class="sponsor_logo_img img-responsive center-block" /></a>       
+    <a href="#"><img src="images/sponsor-logo-7.jpg" alt="1" class="sponsor_logo_img img-responsive" /></a>
+    <div class="clearfix"></div>
+</div>
+<!--End of sponsor Logo Container-->
+
+<div class="clearfix"></div>
+
+<div class="col-xs-12 col-sm-12 col-md-12 category_search_container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6 category_job_listing_container">
+            <h2>Category Job Listing</h2>
+            <div class="row">            
+                <div class="col-xs-12 col-sm-6 col-md-5">
+                    <h4>Functional Category</h4>
+                </div>
+                <div class="hidden-xs col-sm-6 col-md-6 industry_category_heading">
+                    <h4>Industry Category</h4>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12 no_padding_left no_right_padding category_job_listing_scroll gray-skin demo">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-6 sp_border">
+                        <div class="list_item_container">
+                            <ul>
+                                <?php foreach ($this->jobCategory as $tjobs): ?>
+                                    <li><a href="/job?catId=<?php echo $tjobs['id'] ?>"><?php echo $tjobs['name'] ?> <span class="total_job">(<?php echo $tjobs['totalJob'] ?>)</span></a></li>
+                                    <?php
+                                endforeach;
+                                ?>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="hidden-xs col-sm-6 col-md-6">                   
+                        <div class="list_item_container">
+                            <ul>
+                                <?php foreach ($this->jobIndustry as $tijobs): ?>
+
+                                    <li><a href="job?indId=<?php echo $tijobs['id'] ?>"><?php echo $tijobs['name']; ?> <span class="total_job">(<?php echo $tijobs['totalJob']; ?>)</span></a></li>
+
+                                <?php endforeach; ?>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div> 
+                <!-- End of Row --> 
+            </div>
+
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="carousel_slider">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                    </ol>
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            <img src="images/slider2.jpg" alt="...">
+                            <div class="carousel-caption">
+                                ...
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="images/slider1.jpg" alt="Ad Slider">
+                        </div>
+                        <div class="item">
+                            <img src="images/slider3.jpg" alt="Ad Slider">
+                        </div>
+
+                    </div>
+
+                    <!-- Controls -->
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="clearfix"></div>
+
+</div> <!--End of Browse Jobs-->
+
+<div class="clearfix"></div>
+<!-- Start Feedback -->
+<div id="feedbacks" class="popup-trigger" data-toggle="modal" data-target="#myModal">
+</div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="feedback_modal">
+                <button type="button" class="close feedback_close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title modal_title" id="myModalLabel">Send us your feedback</h4>
+            </div>
+            <div class="modal-body">
+                <div class="feedbacks_body">
+                    <div class="col-md-12 col-sm-12 col-xs-12 no_padding_left no_right_padding">
+                        <div class="col-md-3 col-sm-3 col-xs-12 no_padding_left no_right_padding">
+                            If you have a question about any service or content of Chakri.com, you may find the answer on our <a href="/page/seeker-faq" target="_blank">FAQ</a> page. If you still have questions or feedback, please use the email to <a href="/contact" target="_blank">contact</a>
+                            <br />
+                        </div>
+                        <div class="col-md-9 col-sm-9 col-xs-12 no_right_padding">
+                            <form action="/feedback" method="post" name="feedbackForm" id="captchaForm">
+                                <div class="feedback_type">
+                                    <ul>
+                                        <li>
+                                            <input type="radio" id="gq" name="type" checked="checked" onclick="getSubject()" value="General Questions">
+                                            <label for="gq"><span class="img"><i class="fa fa-comment"></i></span><span><p>General</p><p>Questions</p></span></label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" id="sf" name="type" onclick="getSubject()" value="Site Functionality">
+                                            <label for="sf"><span class="img"><i class="fa fa-gift"></i></span><span><p>Site</p><p>Functionality</p></span></label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" id="nlaf" name="type" onclick="getSubject()" value="New Look and Feel">
+                                            <label for="nlaf"><span class="img"><i class="fa fa-eye"></i></span><span><p>New Look</p><p>and Feel</p></span></label>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="feedback-content">
+                                    <div>
+                                        <input type="email" id="email" class="form-control feedback_inp" placeholder="Your Email" name="email">
+                                    </div>
+                                    <div>
+                                        <input type="text" id="subject" class="form-control feedback_inp" placeholder="Subject" name="subject">
+                                    </div>
+                                    <div><textarea id="message" class="form-control feedback_inp" style="height: 150px;" placeholder="Your Message" name="message"></textarea></div>
+                                </div>
+                                <div class="feed_submit col-sm-12 col-md-12 col-xs-12 no_right_padding no_padding_left">
+
+                                    <div class="form-group col-sm-12 col-md-8 col-xs-8 no_right_padding no_padding_left">
+                                        <label class="col-xs-5 control-label captcha_left_option" id="captchaOperation"></label>
+                                        <div class="col-xs-6 captcha_result no_right_padding no_padding_left">
+                                            <input type="text" class="form-control" name="captcha" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-4 col-xs-4 no_right_padding no_padding_left">
+                                        <button class="btn lg purple" id="feedback" type="submit" data-taction="click">
+                                            <div>Send Feedback</div><div class="icon forward white"></div>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form> 
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- End Feedback -->
+
+<div class="col-xs-12 col-sm-12 col-md-12 spotlight_full_container">
+    <h2>Spotlight Jobs</h2>
+    <div class="row">
+        <?php
+        foreach ($this->spotlightJob as $val1) {
+            foreach ($val1 as $key => $val2) {
+                if (count($val1[$key]) == 1) {
+                    foreach ($val2 as $val3) {
+                        $filename = getcwd() . '/public/upload/job/' . $val3["spotlight_job_logo"];
+
+                        if (file_exists($filename) && $val3["spotlight_job_logo"] != "") {
+                            $image_path = "upload/job/" . $val3["spotlight_job_logo"];
+                        } else {
+                            $image_path = "images/spot_logo_1.jpg";
+                        }
+                        ?>
+
+                        <div class="col-xs-12 col-sm-4 col-md-4 spotlight_jobs_container">
+                            <div class="spot_light_each_container"> 
+                                <div class="col-xs-4 col-sm-3 col-md-3 spotlight_logo_each">                                    
+                                    <img src="<?php echo $image_path; ?>" alt="logo" width="53" height="53" class="img-responsive center-block" />
+                                </div>
+
+                                <div class="col-xs-8 col-sm-9 col-md-9 spotlight_details_container">
+                                    <?php
+                                    if ($val3["full_name"] != "") {
+                                        ?>
+                                        <h2><?php echo $val3["full_name"]; ?></h2>
+                                        <?php
+                                    } else {
+                                        ?>
+                                        <h2><?php echo $val3["job_company_name"]; ?></h2>
+                                        <?php
+                                    }
+                                    ?>
+
+                                    <p><a class="more_text" target="_blank" href="/spotlight/<?php echo $val3["job_id"]; ?>"> <i class="fa fa-caret-right"></i> <?php echo $val3["job_title"]; ?></a></p>                        
+
+                                    <div class="clearfix"></div>
+                                </div>                                 
+                                <div class="clear"></div>                            
+                            </div> 
+
+                        </div>                    
+                        <?php
+                    }
+                }
+                if (count($val1[$key]) == 2) {
+                    ?>
+                    <div class="col-xs-12 col-sm-4 col-md-4 spotlight_jobs_container">
+                        <div class="spot_light_each_container">
+                            <?php
+                            $counter = 1;
+                            foreach ($val2 as $val3) {
+                                //$filename = APPLICATION_PATH.'/../upload/client/'.$val3["company_logo"];
+                                $filename = getcwd() . '/public/upload/job/' . $val3["spotlight_job_logo"];
+
+                                if (file_exists($filename) && $val3["spotlight_job_logo"] != "") {
+                                    $image_path = "upload/job/" . $val3["spotlight_job_logo"];
+                                } else {
+                                    $image_path = "images/spot_logo_1.jpg";
+                                }
+
+                                if ($counter == 1) {
+                                    ?>                             
+                                    <div class="col-xs-4 col-sm-3 col-md-3 spotlight_logo_each">
+                                        <img src="<?php echo $image_path; ?>" alt="logo" width="53" height="53" class="img-responsive center-block" />
+                                    </div>
+                                    <div class="col-xs-8 col-sm-9 col-md-9 spotlight_details_container">
+                                        <?php
+                                        if ($val3["full_name"] != "") {
+                                            ?>
+                                            <h2><?php echo $val3["full_name"]; ?></h2>
+                                            <?php
+                                        } else {
+                                            ?>
+                                            <h2><?php echo $val3["job_company_name"]; ?></h2>
+                                            <?php
+                                        }
+                                        ?>
+
+                                        <p><a class="more_text" target="_blank" href="/spotlight/<?php echo $val3["job_id"]; ?>"><i class="fa fa-caret-right"></i> <?php echo $val3["job_title"]; ?></a></p>                        
+                                        <?php
+                                    } else {
+                                        ?>
+                                        <p><a class="more_text" target="_blank" href="/spotlight/<?php echo $val3["job_id"]; ?>"><i class="fa fa-caret-right"></i> <?php echo $val3["job_title"]; ?></a></p>    
+
+                                        <?php
+                                    }
+                                    ?>      
+                                    <?php
+                                    $total_job = $counter;
+                                    $counter++;
+                                }
+                                ?>
+                            </div>  
+                            <div class="clear"></div>
+                        </div>                   
+
+                    </div>    
+                    <?php
+                }
+
+                if (count($val1[$key]) > 2) {
+                    ?>
+
+                    <div class="col-xs-12 col-sm-4 col-md-4 spotlight_jobs_container large_box">
+                        <div class="spot_light_each_container">
+                            <?php
+                            $counter = 1;
+                            foreach ($val2 as $val3) {
+                                //$filename = APPLICATION_PATH.'/../upload/client/'.$val3["company_logo"];
+                                $filename = getcwd() . '/public/upload/job/' . $val3["spotlight_job_logo"];
+
+                                if (file_exists($filename) && $val3["spotlight_job_logo"] != "") {
+                                    $image_path = "upload/job/" . $val3["spotlight_job_logo"];
+                                } else {
+                                    $image_path = "images/spot_logo_1.jpg";
+                                }
+
+                                if ($counter == 1) {
+                                    ?>                             
+                                    <div class="col-xs-4 col-sm-3 col-md-3 spotlight_logo_each">
+                                        <img src="<?php echo $image_path; ?>" alt="logo" width="53" height="53" class="img-responsive center-block" />
+                                    </div>
+                                    <div class="col-xs-8 col-sm-9 col-md-9 spotlight_details_container">
+                                        <?php
+                                        if ($val3["full_name"] != "") {
+                                            ?>
+                                            <h2><?php echo $val3["full_name"]; ?></h2>
+                                            <?php
+                                        } else {
+                                            ?>
+                                            <h2><?php echo $val3["job_company_name"]; ?></h2>
+                                            <?php
+                                        }
+                                        ?>
+
+                                        <p><a class="more_text" target="_blank" href="/spotlight/<?php echo $val3["job_id"]; ?>"><i class="fa fa-caret-right"></i> <?php echo $val3["job_title"]; ?></a></p>                        
+                                        <?php
+                                    } else {
+                                        ?>
+                                        <p><a class="more_text" target="_blank" href="/spotlight/<?php echo $val3["job_id"]; ?>"><i class="fa fa-caret-right"></i> <?php echo $val3["job_title"]; ?></a></p>    
+
+                                        <?php
+                                    }
+                                    ?>      
+                                    <?php
+                                    $total_job = $counter;
+                                    $counter++;
+                                }
+                                ?>
+                            </div>  
+                            <div class="clear"></div>
+                        </div> 
+                        <?php if ($total_job > 2) { ?>
+                            <div class="spotlight_icon_container">
+                                <i class="fa fa-angle-down"></i>
+                            </div>
+                        <?php } ?>
+
+                    </div>  
+
+                    <?php
+                }
+            }
+        }
+        ?>  
+    </div>
+
+</div>
+<div class="clearfix"></div>
+
+<div class="row">
+    <div class="hidden-xs">    
+        <div class="common_google_ads img-responsive">
+            <!-- /85406138/Chakri_HP_Middle_970x90 -->
+            <div id='div-gpt-ad-1440659257413-0'>
+                <script type='text/javascript'>
+                    googletag.cmd.push(function() {
+                        googletag.display('div-gpt-ad-1440659257413-0');
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+
+
+<div class="col-xs-12 col-sm-12 col-md-12 events_top_employer_container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6 events_container">
+            <h2>Events</h2>
+            <div class="events_scroll_container gray-skin demo">
+                <p>Do you need advice on CV  or job search strategy? Do you want to meet our Career avvisors? we will be participating the following events around the country.</p>
+                <?php foreach ($events as $evt) { ?>
+                    <div class="events_each_container"> 
+                        <div class="row">
+                            <div class="col-xs-4 col-sm-3 col-md-3">
+                                <img src="<?php echo ($evt["event_logo"] != NULL) ? "images/event/" . $evt["event_logo"] : "img/default.jpg"; ?>" alt="logo" width="80" height="33" class="events_logo img-responsive center-block" />  
+                            </div>
+                            <div class="col-xs-8 col-sm-9 col-md-9 events_heading_details">
+                                <h4><a href="/eventdetail/<?php echo $id = $evt["id"]; ?>" target="_blank"><?php echo $evt["event_title"]; ?></a></h4>
+                                <p class="location">Venue: <?php echo $evt["venue"]; ?></p>
+                                <p class="events_date">Date: 
+
+                                    <?php
+                                    $dt = Carbon::createFromFormat('Y-m-d', $evt["event_date"]);
+                                    echo $dt->toFormattedDateString();
+                                    ?>
+                                    <?php
+                                    $dt = Carbon::createFromFormat('Y-m-d', $evt["event_expire_date"]);
+                                    echo " - " . $dt->toFormattedDateString();
+                                    ?></p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <p class="events_p">
+                            <?php
+                            $short_description = explode(" ", $evt['details']);
+                            echo strip_tags(implode(" ", array_splice($short_description, 0, 15)) . " ...");
+                            ?>
+                        </p>
+                    </div>
+                <?php } ?>
+            </div>            
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-6 top_employer_container">
+            <h2>Top Employers</h2>
+            <div class="top_employer_logo_container gray-skin demo">
+                <div class="row">
+                    <?php
+                    foreach ($this->topEmployer as $val) {
+                        //$filename =  $this->serverUrl().'/public/upload/client/'.$val["company_logo"];
+                        $filename = getcwd() . '/public/upload/client/' . $val["company_logo"];
+                        if (file_exists($filename) && $val["company_logo"] != "") {
+                            ?>
+
+                            <div class="col-xs-6 col-sm-3 col-md-3 top_employer_border">
+                                <a href="<?php echo "/topemployer/" . $val["id"]; ?>">
+                                    <img src="upload/client/<?php echo $val["company_logo"]; ?>" width="120" alt="<?php echo $val["full_name"]; ?>" title="<?php echo $val["full_name"]; ?>" class="top_employer_img img-responsive center-block" />
+                                </a>
+                            </div>
+                            <?php
+                        } else {
+                            ?>
+                            <div class="col-xs-6 col-sm-3 col-md-3 top_employer_border">
+                                <a href="<?php echo "/topemployer/" . $val["id"]; ?>">
+                                    <img src="upload/client/no_image.png" width="120" height="65" alt="<?php echo $val["full_name"]; ?>" title="<?php echo $val["full_name"]; ?>" class="top_employer_img img-responsive center-block" />
+
+                                </a>
+                            </div>
+                            <?php
+                        }
+                    }
+                    ?>  
+
+                    <?php
+                    foreach ($this->topUniversity as $val) {
+                        //$filename =  $this->serverUrl().'/public/upload/client/'.$val["company_logo"];
+                        $filename = getcwd() . '/public/upload/client/' . $val["company_logo"];
+                        if (file_exists($filename) && $val["institute_logo"] != "") {
+                            ?>
+                            <div class="col-xs-6 col-sm-3 col-md-3 top_employer_border">
+                                <a href="<?php echo "/topuniversity/" . $val["id"]; ?>">
+                                    <img src="<?php echo $val["institute_logo"]; ?>" width="120" alt="<?php echo $val["name"]; ?>" title="<?php echo $val["name"]; ?>" class="top_employer_img img-responsive center-block" />
+                                </a>
+                            </div>
+                            <?php
+                        } else {
+                            ?>
+                            <div class="col-xs-6 col-sm-3 col-md-3 top_employer_border">
+                                <a href="<?php echo "/topuniversity/" . $val["id"]; ?>">
+                                    <img src="upload/client/no_image.png" width="120" height="65" alt="<?php echo $val["name"]; ?>" title="<?php echo $val["name"]; ?>" class="top_employer_img img-responsive center-block" />
+
+                                </a>
+                            </div>
+                            <?php
+                        }
+                    }
+                    ?>  
+                </div>
+
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+
+<div class="col-xs-12 col-sm-12 col-md-12 workshop_container">
+    <h2>Workshop</h2>
+    <div class="col-xs-12 col-sm-12 col-md-12 workshop_full_container">
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 col-md-4 workshop_each">
+                <p class="exclusive">Exclusive Workshop on</p>
+                <h4 class="workshop_title"><a href="#">Essential Analysis of Supply Chain and Logistics Management </a></h4>
+                <p class="training_date">Workshop Date: 9th October, 2015 </p>
+                <p class="registration_fee">Registration Fee: BDT 6000 TK</p>
+            </div>
+
+            <div class="col-xs-12 col-sm-4 col-md-4 workshop_each">
+                <p class="exclusive">Exclusive Workshop  on</p>
+                <h4 class="workshop_title highlight"><a href="#">Professional Advanced Excel Tips 2007 &2010</a></h4>
+                <p class="training_date">Workshop  Date: 16th October, 2015 </p>
+                <p class="registration_fee">Registration Fee: BDT 6000 TK</p>
+            </div>
+
+            <div class="col-xs-12 col-sm-4 col-md-4 workshop_each no_right_border">
+                <p class="exclusive">Exclusive Workshop  on</p>
+                <h4 class="workshop_title"><a href="#">True Commercial Guide of Export-Import Business (A to Z systematic process)</a></h4>
+                <p class="training_date">Workshop  Date: 16th October, 2015 </p>
+                <p class="registration_fee">Registration Fee: BDT 6000 TK</p>
+            </div>
+
+            <div class="col-xs-12 col-sm-4 col-md-4 workshop_each">
+                <p class="exclusive">Exclusive Workshop  on</p>
+                <h4 class="workshop_title"><a href="#">News and Programme Presentation in Radio & Television</a></h4>
+                <p class="training_date">Workshop  Date: 23th October, 2015 </p>
+                <p class="registration_fee">Registration Fee: BDT 6000 TK</p>
+            </div>
+
+            <div class="col-xs-12 col-sm-4 col-md-4 workshop_each">
+                <p class="exclusive">Exclusive Workshop  on</p>
+                <h4 class="workshop_title"><a href="#">Outsourcing- Freelancing Jobs Online and Ways to be a Freelancer</a></h4>
+                <p class="training_date">Workshop  Date: 23th October, 2015 </p>
+                <p class="registration_fee">Registration Fee: BDT 3500 TK</p>
+            </div>
+
+            <div class="col-xs-12 col-sm-4 col-md-4 workshop_each no_right_border">
+                <p class="exclusive">Exclusive Workshop  on</p>
+                <h4 class="workshop_title"><a href="#">L/C Mechanism, It’s Financing and Insurance Management in International Business (in the case of Import and Export)</a></h4>
+                <p class="training_date">Workshop  Date: 6th November, 2015 </p>
+                <p class="registration_fee">Registration Fee: BDT 6000 TK</p>
+            </div>
+
+            <div class="col-xs-12 col-sm-4 col-md-4 workshop_each no_border_bottom">
+                <p class="exclusive">Exclusive Workshop  on</p>
+                <h4 class="workshop_title"><a href="#">Finance for Non finance Managers</a></h4>
+                <p class="training_date">Workshop  Date: 6th November, 2015 </p>
+                <p class="registration_fee">Registration Fee: BDT 3500 TK</p>
+            </div>
+
+            <div class="col-xs-12 col-sm-4 col-md-4 workshop_each no_border_bottom">
+                <p class="exclusive">Exclusive Workshop  on</p>
+                <h4 class="workshop_title"><a href="#">Procurement (Local & International) and Logistics Management (Inventory), Transportation & Warehousing)</a></h4>
+                <p class="training_date">Workshop  Date: 13th November, 2015 </p>
+                <p class="registration_fee">Registration Fee: BDT 6000 TK</p>
+            </div>
+
+            <div class="col-xs-12 col-sm-4 col-md-4 workshop_each no_border_bottom no_right_border">
+                <p class="exclusive">Exclusive Workshop  on</p>
+                <h4 class="workshop_title"><a href="#">Banking, Shipping and Customs Procedure for Export-Import Business (Systematic Procedure)</a></h4>
+                <p class="training_date">Workshop  Date: 30th October, 2015 </p>
+                <p class="registration_fee">Registration Fee: BDT 3000 TK</p>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>        
+</div>
+
+
+
+<div class="col-xs-12 col-sm-12 col-md-12 gplus_facebook_container">
+    <div class="col-xs-12 col-sm-6 col-md-6 gplus_container">
+        <img src="images/gplus_img.jpg" alt="gplus" class="gplus_img img-responsive">
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-6 pull-right facebook_container">
+        <img src="images/facebook_img.jpg" alt="facebook" class="img-responsive" />
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+
+<div class="col-xs-12 col-sm-12 col-md-12 app_button_container"> 
+    <div class="col-xs-12 col-sm-7 col-md-6 col-sm-offset-4 col-md-offset-4 app_store_btn"> 
+        <p>Coming Soon</p> 
+        <a href="#"><img src="images/app-store_btn.jpg" alt="app store" class="app_store_btn" /></a>   
+        <a href="#"><img src="images/google-play_btn.jpg" alt="Google play store" /></a> 
+
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+<div class="hidden-xs">
+    <div class="common_google_ads">
+        <!-- /85406138/Chakri_HP_B2_970x90 -->
+        <div id='div-gpt-ad-1440659522814-0'>
+            <script type='text/javascript'>
+                googletag.cmd.push(function() {
+                    googletag.display('div-gpt-ad-1440659522814-0');
+                });
+            </script>
+        </div>
+    </div>
+</div>
+
+</div>
+</div>
+
+<link href="../css/lux.css" rel="stylesheet"/>
+<link href="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.0/css/bootstrapValidator.min.css" rel="stylesheet"/>
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.0/js/bootstrapValidator.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+                $(document).ready(function() {
+                    //var myDiv = $('.more_text');
+                    // myDiv.text(myDiv.text().substring(0,60) + '');
+
+                    //var txt= $('.more_text').text();
+                    //if(txt.length > 155)
+                    //$('.more_text').text(txt.substring(0,150) + '.....');
+
+                    $(".more_text").text(function(index, currentText) {
+                        //return currentText.substr(0, 175);
+                    });
+                });
+
+</script>
+
+<script>
+    $(document).ready(function() {
+        function randomNumber(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+
+        function generateCaptcha() {
+            $('#captchaOperation').html([randomNumber(1, 10), '+', randomNumber(1, 10), '='].join(' '));
+        }
+
+        generateCaptcha();
+
+        $('#captchaForm')
+                .bootstrapValidator({
+                    framework: 'bootstrap',
+                    icon: {
+                        valid: 'glyphicon glyphicon-ok',
+                        invalid: 'glyphicon glyphicon-remove',
+                        validating: 'glyphicon glyphicon-refresh'
+                    },
+                    fields: {
+                        email: {
+                            validators: {
+                                notEmpty: {
+                                    message: "An email address is mandatory."
+                                }, // notEmpty
+                                emailAddress: {
+                                    message: "This is not a valid email address"
+                                } // emailAddress		  
+                            } // validators
+                        }, // email
+                        subject: {
+                            validators: {
+                                notEmpty: {
+                                    message: "Are you sure? No subject?"
+                                } // notEmpty
+                            } // validators
+                        }, //subject
+                        message: {
+                            validators: {
+                                notEmpty: {
+                                    message: "Are you sure? No message?"
+                                } // notEmpty
+                            } // validators
+                        }, //message
+                        captcha: {
+                            validators: {
+                                callback: {
+                                    message: 'Wrong answer',
+                                    callback: function(value, validator, $field) {
+                                        // Determine the numbers which are generated in captchaOperation
+                                        var items = $('#captchaOperation').html().split(' '),
+                                                sum = parseInt(items[0]) + parseInt(items[2]);
+                                        return value == sum;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                })
+                .on('err.form.fv', function(e) {
+                    generateCaptcha();
+                });
+        getSubject();
+    });
+
+    function getSubject() {
+        var subject = $("input:radio[name=type]:checked").val();
+        $("#subject").val(subject);
+    }
+</script>
+
+
+<script>
+    $(document).ready(function() {
+        $('.large_box').hover(function() {
+            $(this).find('p').show();
+        }, function() {
+            $('.spotlight_details_container').find('p').hide();            
+            $('.spotlight_details_container p:nth-child(2)').show();
+            $('.spotlight_details_container p:nth-child(3)').show();
+        });
+
+    });
+</script>

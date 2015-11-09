@@ -1,0 +1,162 @@
+<?php use Carbon\Carbon; ?>
+<section class="content">
+
+    <!-- Default box -->
+    <div class="box box-default">
+        <div class="box-header with-border">
+
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 reports_date">
+                   <form method="post" action="">
+                        <div class="col-xs-12 col-sm-3 col-md-3">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <strong>From: </strong><i class="fa fa-calendar"></i>
+                                </div>
+                                <?php 
+                                if(isset($this->search_data["from_date"]) !="")
+                                {
+                                   $from_date = $this->search_data["from_date"];
+                                }
+                                else
+                                {
+                                    $from_date = "";
+                                }
+                                ?>
+                                <input type="text" name="from_date" value="<?php echo $from_date; ?>" class="form-control" data-inputmask="'alias': 'yyyy-mm-dd'" data-mask="">                            
+                            </div> 
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-3 col-md-3">
+
+                            <div class="input-group todate">
+                                <div class="input-group-addon">
+                                    <strong>To: </strong><i class="fa fa-calendar"></i>
+                                </div>
+                                <?php 
+                                if(isset($this->search_data["to_date"]) !="")
+                                {
+                                   $to_date = $this->search_data["to_date"];
+                                }
+                                else
+                                {
+                                    $to_date = "";
+                                }
+                                ?>
+                                <input type="text" name="to_date" value="<?php echo $to_date; ?>" class="form-control" data-inputmask="'alias': 'yyyy-mm-dd'" data-mask="">
+                            </div>   
+                        </div>
+
+                        <div class="col-xs-12 col-sm-2 col-md-2">
+                            <div class="btn-group">
+                                <input type="submit" name="search_btn" value="View" class="btn btn-primary" />
+                            </div>   
+                        </div>
+
+                        <div class="col-xs-12 col-sm-2 col-md-2 pull-right no_right_padding">
+                            <div class="btn-group reports_download_btn">
+                                <a href="<?php echo $this->url($this->route, array('action'=>'downloadcsv'), array('query' => $params)); ?><?php echo (count($params)>0) ? "&" :"?"; ?>page=<?php echo $currentpage;?>&type=spotlightjob" class="btn btn-primary"><i class="fa fa-download"></i> Download</a>
+                            </div>  
+                        </div>
+                    </form>                    
+                </div>
+            </div>
+        </div>
+        <div class="box-body">           
+
+
+
+            <table id="example1" class="table table-bordered table-striped table-condensed">
+                <thead>
+                    <tr>
+                        <th>SN.</th>
+                        <th>Job Title</th>
+                        <th>Company </th>
+                        <th>Posting Date </th>                        
+                        <th>Deadline </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($this->paginator as $key=>$val): ?>
+                        <tr>
+                            <td><?php echo $key+1;?></td>
+                            <td><?php echo $val["job_title"]; ?></td>
+                            <td>
+                            <?php 
+                            if($val["job_circular_type"] =="")
+                            {
+                                echo $val["full_name"];
+                            }
+                            else{
+                                echo $val["job_company_name"];
+                            }
+                            ?>
+                            </td>
+                            <td>
+                            <?php
+                           
+                            if($val["posting_date"] != "0000-00-00" && $val["posting_date"] !="")
+                            {    
+                                $dt = Carbon::createFromFormat('Y-m-d',$val["posting_date"]);
+                                echo $dt->toFormattedDateString();
+                            }
+                            ?>
+                            </td>                            
+                            <td>
+                            <?php
+                            if($val["job_deadline"] != "0000-00-00" && $val["posting_date"] !="")
+                            {
+                                $dt = Carbon::createFromFormat('Y-m-d',$val["job_deadline"]);
+                                echo $dt->toFormattedDateString();
+                            }    
+                            ?>
+                            </td>  
+
+                        </tr>
+                    <?php endforeach; ?>
+
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>SN.</th>
+                        <th>Job Title</th>
+                        <th>Company </th>
+                        <th>Posting Date </th>                        
+                        <th>Deadline </th>
+                    </tr>
+                </tfoot>
+            </table>
+            
+            <?php
+            // add at the end of the file after the table
+                echo $this->paginationControl(
+                        // the paginator object
+                        $this->paginator,
+                        // the scrolling style
+                        'sliding',
+                        // the partial to use to render the control
+                        'partial/paginator.phtml', array('params' => $params)
+                );
+                ?>
+        </div><!-- /.box-body -->
+
+    </div><!-- /.box -->
+
+</section><!-- /.content -->
+
+<script type="text/javascript">
+
+    var objectId;
+    $(function () {
+        $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
+        $("[data-mask]").inputmask();
+
+        //$("#example1").dataTable();
+        /*
+        $('#example1').dataTable({
+            "order": [[0, "desc"]]
+        });
+        */
+    });
+</script>

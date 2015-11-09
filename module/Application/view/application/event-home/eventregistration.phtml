@@ -1,0 +1,144 @@
+<?php
+//echo $this->id;
+//exit;
+?>
+<div class="hidden-xs common_google_ads t1-position-ad">
+    <!-- /85406138/Chakri_Articles_T1_970x90 -->
+    <div id='div-gpt-ad-1444651027888-0'>
+        <script type='text/javascript'>
+            googletag.cmd.push(function() {
+                googletag.display('div-gpt-ad-1444651027888-0');
+            });
+        </script>
+    </div>
+</div>
+
+<div class="col-xs-12 col-sm-12 col-md-12 about_us_page_container">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse event_menu">
+            <ul class="nav navbar-nav event_menu_a">
+                <li><a href="/event">All Events</a></li>
+                <li><a href="/eventarchives">Events Archive</a></li>
+                <li><a href="/eventregistration" id="act_evt" class="active_event">Online Registration </a></li>
+                <li><a href="/contact" target="_blank">Contact Us</a></li>
+            </ul>
+        </div> 
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12 evt_dle event_registration">       
+        <div class="box box-solid alert-error">
+            <!--                <div class="box-tools pull-right">
+                                <button data-widget="remove" class="btn btn-box-tool text-gray"><i class="fa fa-times"></i></button>
+                            </div>-->
+            <div class="box-body">
+                <?php echo $this->flashMessenger()->setMessageOpenFormat('<strong>')->setMessageCloseString('</strong>')->render('error'); ?>
+            </div>
+        </div>
+
+        <form role="form" data-toggle="validator" class="form-horizontal register_employer_form evt_registration" method="post" enctype="multipart/form-data">
+            <h1>Online Registration Form</h1>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-4 col-md-3 col-md-offset-1 control-label">Select Event<span class="validation_star">*</span> :</label>
+                <div class="col-sm-8 col-md-7">
+                    <select class="form-control" name="event_id" id="event_id" required>
+                        <?php foreach ($this->events as $event): $id = $event['id']; ?>
+                            <option value="<?php echo $event['id']; ?>" <?php echo ($event['id'] == $this->id) ? "selected" : ""; ?>> <?php echo $event['event_title']; ?> </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-4 col-md-3 col-md-offset-1 control-label">Name<span class="validation_star">*</span> :</label>
+                <div class="col-sm-7 col-md-7">
+                    <input type="text" class="form-control" id="" name="name" placeholder="Name" required value="" >
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputUserName" class="col-sm-4 col-md-3 col-md-offset-1 control-label">Company Name<span class="validation_star">*</span> :</label>
+                <div class="col-sm-7 col-md-7">
+                    <input type="text" id="" name="company_name" class="form-control" id="" placeholder="Your Company Name" required value="">
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-4 col-md-3 col-md-offset-1 control-label">Your Address:</label>
+                <div class="col-sm-7 col-md-7">
+                    <textarea type="" class="form-control" id="password" name="address" placeholder="Your Address" value=""></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="event_email" class="col-sm-4 col-md-3 col-md-offset-1 control-label">Email Address<span class="validation_star">*</span> :</label>
+                <div class="col-sm-7 col-md-7">
+                    <input type="email" class="form-control" id="event_email" name="email" placeholder="Email" required value="">
+                </div>
+            </div>            
+
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-4 col-md-3 col-md-offset-1 control-label">Web Site :</label>
+                <div class="col-sm-7 col-md-7">
+                    <input type="url" class="form-control" id="inputPassword3" name="website" type="url" placeholder="Web Site" value="">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-4 col-md-3 col-md-offset-1 control-label">Contact No<span class="validation_star">*</span> :</label>
+                <div class="col-sm-7 col-md-7">
+                    <input type="text" class="form-control" id="inputPassword3" name="contact_no" placeholder="Phone" required value="" >
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-4 col-md-3 col-md-offset-1 control-label">Notes(if you have any question that you want to discuss in the session please mention):</label>
+                <div class="col-sm-7 col-md-7">
+                    <textarea type="text" class="form-control event_reg_msg" id="inputPassword3" name="note" placeholder="Message" value="" ></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class=" col-xs-12 col-sm-8 col-md-8 col-lg-8 col-sm-offset-4 col-md-offset-4 col-lg-offset-4 btn_submit">
+                    <button type="submit" class="btn btn-primary pull-left">Submit</button>
+                </div>                                            
+            </div>
+        </form>
+
+        <div class="col-xs-12 col-sm-3 col-md-3"></div>
+    </div>
+</div>
+
+<div class="hidden-xs col-sm-12 col-md-12 common_google_ads">
+    <!-- /85406138/Chakri_About-Policy-Terms_B2_970x90 -->
+    <div id='div-gpt-ad-1444720307947-0'>
+        <script type='text/javascript'>
+            googletag.cmd.push(function() {
+                googletag.display('div-gpt-ad-1444720307947-0');
+            });
+        </script>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function() {
+        $("#event_email").focusout(function(e) {
+            var emailData = $("#event_email").val();
+            if (emailData !== "") {
+                var eventData = $("#event_id").val();
+                var URL = "/eventRegistrationCheck";
+                $.ajax({
+                    url: URL,
+                    type: "POST",
+                    data: {event: eventData, email: emailData},
+                    success: function(data, textStatus, jqXHR) {
+                        $(".alert-error").show();
+                        if (data.success) {
+                            $(".alert-error .box-body").html("You already registered to this event");
+                            e.preventDefault();
+                        }
+                        if (!data.success) {
+                            $(".alert-error .box-body").html("Event available for registration");
+                        }
+                    }
+                });
+                e.preventDefault();
+            } else
+                $(".alert-error").hide();
+        });
+    });
+</script>

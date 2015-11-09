@@ -1,0 +1,266 @@
+
+<div class="col-xs-12 col-sm-12 col-md-12 about_us_page_container">
+    <div class="col-xs-12 col-sm-12 col-md-12 no_padding_left pagination_top_container">
+        <ul>
+            <li><a href="">Home</a></li>
+            <li>Feedback</li>           
+            <div class="clearfix"></div>
+        </ul>        
+    </div>
+    <div class="col-xs-12 col-sm-8 col-md-8">
+        <h2>Email Us: Feedback and Comments</h2>
+        <p>Please tell us about your experience with chakri.com. Let us know what you'd like us to add so we can work on making chakri.com a greater place for you.</p>
+        <div class="contact_form_container">
+            <form role="form" data-toggle="validator" class="form-horizontal" method="post">
+                <div>
+                    <?php
+                    $flash = $this->flashMessenger();
+                    echo $flash->render('error', array('alert', 'alert-dismissable', 'alert-danger'));
+                    echo $flash->render('info', array('alert', 'alert-dismissable', 'alert-info'));
+                    echo $flash->render('default', array('alert', 'alert-dismissable', 'alert-warning'));
+                    echo $flash->render('success', array('alert', 'alert-dismissable', 'alert-success'));
+
+                    if (count($this->error_messages) > 0) {
+                        ?>
+                        <div class="alert alert-danger">
+                            <?php
+                            foreach ($this->error_messages as $messageId => $message)
+                                echo "<p> $message </p>";
+                            ?>   
+                        </div>
+                        <?php
+                    }
+                    if (count($this->success_messages) > 0) {
+                        ?>
+                        <div class="alert alert-success">
+                            <?php
+                            foreach ($this->success_messages as $messageId => $message)
+                                echo "<p> $message </p>";
+                            ?>
+                        </div>
+                    <?php } ?>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+       <fieldset class="fieldset">
+                        <legend class="legend">Email Information</legend>
+                        <table class="table">
+                            <tr>
+                                <td class="feedback_text">Subject:</td>
+                                <td>
+                                    <select class="form-control feedback_input" name="issue">
+                                        <option value="" selected> -- Select Issues -- </option>
+                                        <option value="Resume Related"> Resume Related  </option>
+                                        <option value="Job Related"> Job Related </option>
+                                        <option value="Profile Related"> Profile Related </option>
+                                        <option value="Others"> Others </option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="feedback_text">Email Address:</td>
+                                <td>
+                                    <input type="text" name="name" id="name" class="form-control feedback_input" placeholder="Name" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="feedback_text">Options:<br>
+                                    <textarea id="message" name="message" class="form-control feedback_input" rows="3" placeholder="Message" required></textarea>
+
+                                    <span class="tip"  style="text-align:left;direction:ltr"><b>0</b> of <b>2000</b> character limit used.</span>
+                                </td>
+
+                            </tr>
+                        </table>          
+                    </fieldset>
+                    <fieldset class="fieldset">
+                        <legend class="legend">Additional Questions</legend>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td width="38%">Please rate us:</td>
+                                <td width="33%"><label><input type="radio" name="rate" value="1" class="radio ">Great</label></td>
+                                <td width="29%"><input type="radio" name="rate" value="1" class="radio ">Poor</td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td><input type="radio" name="rate" value="1" class="radio ">
+                                    Very good</td>
+                                <td><input type="radio" name="rate" value="1" class="radio ">Horrible</td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td><input type="radio" name="rate" value="1" class="radio ">OK</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                        </table>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td width="38%">How did you hear about us?</td>
+                                <td width="33%"><input type="radio" name="rate" value="1" class="radio ">
+                                    chakri.com Referral </td>
+                                <td width="29%"><input type="radio" name="rate" value="1" class="radio ">
+                                    Online Banner </td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td><input type="radio" name="rate" value="1" class="radio ">
+                                    Direct Email</td>
+                                <td><input type="radio" name="rate" value="1" class="radio ">
+                                    Other </td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td><input type="radio" name="rate" value="1" class="radio ">
+                                    Directory </td>
+                                <td><input type="radio" name="rate" value="1" class="radio ">Outdoor Ad </td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td><input type="radio" name="rate" value="1" class="radio ">Friend </td>
+                                <td><input type="radio" name="rate" value="1" class="radio ">Radio </td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td><input type="radio" name="rate" value="1" class="radio ">Job Fair</td>
+                                <td><input type="radio" name="rate" value="1" class="radio ">School/University</td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td><input type="radio" name="rate" value="1" class="radio ">Job section on other websites</td>
+                                <td><input type="radio" name="rate" value="1" class="radio ">Search Engine</td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td><input type="radio" name="rate" value="1" class="radio ">Magazine </td>
+                                <td><input type="radio" name="rate" value="1" class="radio ">Television </td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td><input type="radio" name="rate" value="1" class="radio ">Newspaper</td>
+                                <td><input type="radio" name="rate" value="1" class="radio ">Training Course/Conference/Event</td>
+                            </tr>
+                        </table>
+                        
+                    </fieldset>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 pull-left">
+                    <div class="form-group">                   
+                        <input type="submit" class="btn btn-primary contact_btn" value="Send" />
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+
+    </div>
+
+
+    <div class="col-xs-12 col-sm-4 col-md-4 about_us_right_container">
+        <div class="contact_us_right">
+            <p><span>Dhaka Corporate office</span><br>
+                Prothom-Alojobs.com<br>
+                Prothom-Alo Bhaban, (2nd Floor)<br> 
+                19, Karwan Bazar, Tejgoan, Dhaka-1215.</p>
+            <p><span>Contact Sales Team</span><br>
+                For pre-sales questions or concerns, please call us or send us an email.<br>
+                Mobile: 01922626056, 01916832507, 01614331126, +88 01717808849<br>
+                Phone: 9883547, 9883549, 9883552
+            </p>
+            <p><span> Email</span><br>
+                sharfaraz@prothom-alojobs.com<br>
+                naimur@prothom-alojobs.com<br>
+                lincon@prothom-alo.info
+            </p>
+            <p><span> Contact Training Team</span><br>
+                For Seat Booking & Registration, please call us or send us an email.<br>
+                Mobile: 01678 660819 or 01678 660820<br>
+                Phone:<br>
+                Email: training101@prothom-alojobs.com
+            </p>
+            <p><span> Contact Technical Team</span><br>
+                For any technical or general inquiries, call the following numbers or email us.<br>
+                Phone:<br>
+                Email: 
+            </p>
+            <p><span> Chittagong Corporate Office</span><br>
+                Prothom-Alojobs.com<br>
+                The daily Prothom Alo<br>
+                67 Jamal Khan Road,<br>
+                Chittagong -4000.<br>
+                Mobile: 01199 703370 / 01713 161600<br><br>
+                For pre-sales questions or concerns, please send us an email<br>
+                Email: inquiry@prothom-alojobs.com 
+            </p>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#email").focusout(function (e) {
+            var postData = $("#email").val();
+            if (postData != "") {
+                var URL = "/chkapi/user/emailcheck";
+                $.ajax({
+                    url: URL,
+                    type: "POST",
+                    data: {email: postData},
+                    success: function (data, textStatus, jqXHR) {
+                        if (data.success == true) {
+                            $("#email-check").css("color", "red");
+                            $("#email-check").html(data.email + " Email already exists");
+                            e.preventDefault();
+                        }
+                        if (data.success == false) {
+                            $("#email-check").css("color", "green");
+                            $("#email-check").html("Email available for registration");
+                        }
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        alert(errorThrown);
+                    }
+                });
+                e.preventDefault(); //STOP default action
+                //e.unbind(); //unbind. to stop multiple form submit.
+            } else
+                $("#email-check").css("display", "none");
+        });
+    });
+</script>
+
+<style type="text/css">
+    .fieldset {
+        border: 1px groove #DADADA !important;
+        padding: 0 1.4em 1.4em 1.4em !important;
+        margin: 0 0 1.5em 0 !important;
+        -webkit-box-shadow:  0px 0px 0px 0px #000;
+        box-shadow:  0px 0px 0px 0px #000;
+        font-family: arial,helvetica,sans-serif;
+    }
+    .legend {
+        width:inherit; /* Or auto */
+        padding:0 10px; /* To give a bit of padding on the left and right */
+        border-bottom:none;
+        font-size: 15px;
+    }
+    .feedback_input {
+        margin: 2px 0;
+        color: #000;
+        border: 1px solid #BBB;
+        background: #FFF;
+        padding: 3px;
+        border-radius: 0px;
+        size: 1;
+        font-size: 0.9em;
+        box-shadow: none;
+    }
+    .feedback_text{
+        font-size: 1em;
+        color: #A00;
+    }
+    span.tip {
+        display: block;
+        margin-top: 5px;
+        font-size: .9em;
+        line-height: 1.4em;
+        color: #ccc;
+    </style>

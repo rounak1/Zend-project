@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Chakri.com</title>
+        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/images/favicon.ico')) ?>
+        <link rel="stylesheet" href="<?php echo $this->basePath('css/bootstrap.min.css'); ?>">        
+        <link rel="stylesheet" href="<?php echo $this->basePath('css/font-awesome.min.css') ?>">
+        <link rel="stylesheet" href="<?php echo $this->basePath('css/style.css'); ?>">
+        <link rel="stylesheet" href="<?php echo $this->basePath('css/jquery.custom-scrollbar.css'); ?>">
+        <!--<script src="<?php echo $this->basePath('js/jquery.custom-scrollbar.js'); ?>"> </script>-->
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid menu">
+                <div class="container">
+                    <div class="row">
+
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>                           
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav menu_left">
+                                <li class="active"><a href="/">Home<span class="sr-only">(current)</span></a></li>
+                                <li><a href="/about">About</a></li>
+                                <li><a href="#">Specialities</a></li>
+                                <li><a href="#">Salaries</a></li>
+                                <li><a href="#">Resources</a></li>
+                                <li><a href="/contact">Contact us</a></li>
+
+                            </ul>
+
+                            <?php
+                            if (!$this->identity()) {
+                                ?>
+                            <ul class="nav navbar-nav navbar-right menu_right">
+                                <li><a href="/login">Login</a></li> 
+                                <li><a href="/registration">Register</a></li>
+                                <!-- <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">English <span class="caret"></span></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="#">Bangla</a></li>
+                                        <li><a href="#">Another action</a></li>                                        
+                                    </ul>
+                                </li> -->
+                                <li class="last_menu_btn"><a href="/employer-registration"><button type="button" class="btn btn-primary btn-sm nav_right_btn">For Employers</button></a></li>
+
+
+                            </ul>
+                            <?php } ?>
+
+                            <!--After  Login -->
+                            <?php
+                            if ($this->identity()) {
+                                ?>
+
+                                <ul class="nav navbar-nav navbar-right menu_right logged_in_menu">
+
+                                    <li class="dropdown messages-menu">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                            <i class="fa fa-envelope-o"></i>
+                                            <span class="label label-success">4</span>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li class="header">You have 2 messages</li>
+                                            <li>
+                                                <!-- inner menu: contains the actual data -->
+                                                <ul class="logged_in">
+                                                    <li><a href="#">Message 1</a></li>
+                                                    <li><a href="#">Message 2</a></li>
+
+                                                </ul>
+                                            </li>
+                                            <li class="footer"><a href="#">See All Messages</a></li>
+                                        </ul>
+                                    </li>
+                                    <!-- Notifications: style can be found in dropdown.less -->
+                                    <li class="dropdown notifications-menu">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                            <i class="fa fa-bell-o"></i>
+                                            <span class="label label-warning">10</span>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li class="header">You have 10 notifications</li>
+                                            <li>
+                                                <!-- inner menu: contains the actual data -->
+                                                <ul class="logged_in">
+                                                    <li>
+                                                        <a href="#">
+                                                            5 members joined
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="footer"><a href="#">View all</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown user user-menu">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                            <!--<img src="<?php echo $this->basePath('/dist/img/user2-160x160.jpg'); ?>" class="user-image" alt="User Image"/>-->
+                                            <?php
+                                            if ($this->identity()) {
+                                                ?>
+                                                <span class="hidden-xs"><?php
+                                                    echo $this->identity()->full_name;
+                                                    ?></span>
+                                            <?php } ?>
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-menu_image">
+
+                                            <!-- User image -->
+                                            <li class="user-header">
+                                                <img src="<?php echo $this->basePath('/dist/img/user2-160x160.jpg'); ?>" class="img-circle" alt="User Image" />
+                                                <p>
+                                                    <?php echo $this->identity()->full_name; ?>
+                                                    <small><?php echo 'Last Logged in Nov. 2012'; ?></small>
+                                                </p>
+                                            </li>
+                                            <!-- Menu Footer-->
+                                            <li class="user-footer">
+                                                <div class="pull-left">
+                                                    <a href="#" class="btn btn-default btn-flat">Settings</a>
+                                                </div>
+                                                <div class="pull-right">
+                                                    <a href="/logout" class="btn btn-default btn-flat">Log out</a>
+                                                </div>
+                                                <div class="clearfix"></div>
+
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+
+                            <?php } ?>     
+
+
+                        </div><!-- /.navbar-collapse -->
+
+                    </div>
+                </div> <!-- End of Container-->
+            </div><!-- /.container-fluid -->
+        </nav>   
+
+
+
+        <div class="container-fluid content_full_bg">                           
+            <div class="container"> 
+                <div class="row">
+

@@ -1,0 +1,512 @@
+<?php
+
+use Carbon\Carbon; ?>
+<div class="hidden-xs col-sm-12 col-md-12 common_google_ads t1-position-ad">
+    <div class="row">
+        <!-- /85406138/Chakri_Category_T1_970x90 -->
+        <div id='div-gpt-ad-1440659656479-0'>
+            <script type='text/javascript'>
+                googletag.cmd.push(function() {
+                    googletag.display('div-gpt-ad-1440659656479-0');
+                });
+            </script>
+        </div>
+    </div>
+</div>
+
+<div class="col-xs-12 col-sm-12 col-md-12 category_dtls_page_top_container">  
+    <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-10">
+            <h2>Find Your Perfect Job</h2> 
+            <!--<p>Choose from 8,973 jobs. Let employers find you online. Receive matching jobs by email.
+                Easy and 100% free!</p>-->
+        </div>
+
+        <div class="col-xs-12 col-sm-2 col-md-2">
+            <?php if (!$this->identity()) { ?>
+                <a href="/registration" class="btn btn-warning ctgry_dtls_post_cv">Post Resume</a>
+            <?php } else { ?>
+                <?php if ($this->identity()->user_type == 3) { ?>
+                    <a href="/seeker/myresume" class="btn btn-warning ctgry_dtls_post_cv">Update Your Resume</a>
+                <?php } ?>
+
+
+            <?php } ?>   
+
+        </div>
+    </div>
+</div>
+
+
+<form method="get" action="/job" >
+    <div class="col-xs-12 col-sm-12 col-md-12 category_dtls_page_bottom_container">   
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 col-md-3  ctgry_dtls_left_container">
+                <div class="ctgry_dtls_header_left">
+                    <h3>Refine Results</h3>            
+                </div>
+
+
+                <p class="functional_area_search">Functional Category</p>
+                <div class="functional_area_list">
+                    <ul>
+                        <?php foreach ($functional_type as $ftype) { ?> 
+                            <li class="category_select_click"><label class="radio-inline">
+                                    <input type="radio" name="catId" id="inlineRadio1" value="<?php echo $ftype['id']; ?>" <?php echo (isset($params['catId']) && $params['catId'] == $ftype['id']) ? "checked=''" : ""; ?> > <?php echo $ftype['name']; ?>
+                                </label></li>                                        
+
+                        <?php } ?>
+                        <div class="clearfix"></div>
+                    </ul>
+                </div>
+
+
+                <p class="industry_type_search">Industry Category</p>
+                <div class="industry_list">
+                    <ul>
+                        <?php foreach ($industries as $industry) { ?> 
+                            <li><label class="radio-inline">
+                                    <input type="radio" name="indId" id="inlineRadio1" value="<?php echo $industry['id']; ?>" <?php echo (isset($params['indId']) && $params['indId'] == $ftype['id']) ? "checked=''" : ""; ?> > <?php echo $industry['name']; ?>
+                                </label></li>
+
+                        <?php } ?>
+                        <div class="clearfix"></div>
+                    </ul>
+                </div>
+
+                <p class="job_level_search">Job Level</p> 
+                <div class="job_level_list">
+                    <ul>
+                        <!--<li><label class="radio-inline">
+                                <input type="radio" name="job_level" id="inlineRadio1" value="anyLevel" > Any
+                            </label></li>-->
+
+                        <li><label class="radio-inline">
+                                <input type="radio" name="job_level" id="inlineRadio1" value="Entry" > Entry Level 
+                            </label></li>
+
+                        <li><label class="radio-inline">
+                                <input type="radio" name="job_level" id="inlineRadio1" value="Mid" > Mid Level
+                            </label></li>
+
+                        <li><label class="radio-inline">
+                                <input type="radio" name="job_level" id="inlineRadio1" value="Top" > Top Level
+                            </label></li>
+
+
+                        <div class="clearfix"></div>
+                    </ul>
+                </div>
+
+                <p class="by_education_search">By Education</p>              
+
+                <div class="education_list">
+                    <ul>
+                        <?php foreach ($degrees as $degree) { ?> 
+                            <li><label class="radio-inline">
+                                    <input type="radio" name="degree_id" id="inlineRadio1" value="<?php echo $degree['id']; ?>" > <?php echo $degree['name']; ?>
+                                </label></li>
+
+                        <?php } ?>
+                        <div class="clearfix"></div>
+                    </ul>
+                </div>
+
+
+                <p class="by_employer_search">By Employer</p> 
+
+
+                <div class="employer_list">
+                    <ul>
+                        <?php foreach ($companies as $company) { ?> 
+
+
+
+                            <li><label class="radio-inline">
+                                    <input type="radio" name="emp" id="inlineRadio1" value="<?php echo $company['id']; ?>"  <?php echo (isset($params['emp']) && $params['emp'] == $company['id']) ? "checked=''" : ""; ?> > <?php echo $company['full_name']; ?>
+                                </label>
+                            </li>
+
+                        <?php } ?>
+                        <div class="clearfix"></div>
+                    </ul>
+                </div>
+
+                <p class="job_type">Job Type</p> 
+                <div class="job_type_list">
+                    <ul>
+                        <li>
+
+                            <label class="radio-inline">
+                                <input type="radio" name="job_type" id="inlineRadio1" value="Intern" <?php echo (isset($params['job_type']) && $params['job_type'] == 'Intern') ? "checked=''" : ""; ?> > Intern
+                            </label></li>
+
+                        <li><label class="radio-inline">
+                                <input type="radio" name="job_type" id="inlineRadio1" value="Full" <?php echo (isset($params['job_type']) && $params['job_type'] == 'Full') ? "checked=''" : ""; ?> > Full-Time 
+                            </label></li>
+
+                        <li><label class="radio-inline">
+                                <input type="radio" name="job_type" id="inlineRadio1" value="Part" <?php echo (isset($params['job_type']) && $params['job_type'] == 'Part') ? "checked=''" : ""; ?> > Part-Time
+                            </label></li>
+
+                        <li><label class="radio-inline">
+                                <input type="radio" name="job_type" id="inlineRadio1" value="contractual" <?php echo (isset($params['job_type']) && $params['job_type'] == 'Contractual') ? "checked=''" : ""; ?> > Contractual
+                            </label></li>
+
+                        <div class="clearfix"></div>
+                    </ul>
+                </div>
+
+
+
+                <button type="submit" name="search_btn" class="btn btn-primary ctgry_dtls_submit">Search</button>
+                <a role="button" href="/job" class="btn btn-default">Clear</a>
+            </div>
+            </form> 
+            <div class="col-xs-12 col-sm-8 col-md-9">
+                <div class="ctgry_dtls_header_full">
+                    <div class="col-xs-12 col-sm-7 col-md-7 no_padding_left ctgry_dtls_header_left">            
+                        <p><b>Total Job:</b><span class="ctgry_dtls_total_job"> <?php echo $total_count; ?></span> </p>
+
+                        <p> <span class="ctgry_dtls_job_ctgory">
+                                <?php
+                                if (count($search_by_users) > 0) {
+                                    foreach ($search_by_users as $key => $value)
+                                        $sval .= '&nbsp;<strong>' . $key . ':</strong>' . ' ' . $value;
+
+                                    echo rtrim($sval) . ' Jobs';
+                                }
+                                ?>
+                                <!--Information-technology-->
+                            </span>   </p>
+                    </div>
+                    <div class="col-xs-12 col-sm-5 col-md-5 no_right_padding ctgry_dtls_sort_icon">
+                        <ul>
+                            <li class="sort_short_li"><img id="ctgry_dtls_sort_short_icon" src="<?php echo $this->basePath('/images/trans.png'); ?>" alt="details icon" class="ctgry_dtls_short_icon" /></li>
+                            <li class="sort_dtls_li"><img id="ctgry_dtls_sort_dtls_icon" src="<?php echo $this->basePath('/images/trans.png'); ?>" alt="details icon" class="ctgry_dtls_long_icon" /></li>
+
+                        </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+                <!-- End of ctgry_dtls_header_full -->
+                <?php foreach ($results as $catDetail): ?>
+
+                    <div class="ctgry_dtls_job_each_container">
+                        <div class="row">
+                            <div class="col-xs-9 col-sm-8 col-md-8">
+                                <h3 class="dtls_job_title"><a href="/job/show/<?php echo $catDetail['id']; ?>"><?php echo $catDetail['job_title']; ?></a></h3>
+                                <?php
+                                if ($catDetail['show_company_status'] == "No") {
+                                    ?>
+                                    <h4 class="dtls_company_name"><?php echo $catDetail['full_name']; ?></h4>
+
+                                    <?php
+                                } else {
+
+                                    echo "<h4 class='dtls_company_name'>" . $catDetail['hidden_company_name'] . "</h4>";
+                                }
+                                ?>
+                                <?php if (!empty($catDetail['job_experienced'])) { ?> 
+                                    <p class="dtls_experience"><?php echo $catDetail['job_experienced'] . " yrs"; ?></p> 
+                                <?php } ?>
+
+                                <?php if (!empty($catDetail['prefer_job_location'])) { ?>
+                                    <p class="dtls_company_location"><?php echo $catDetail['prefer_job_location']; ?></p>
+                                <?php } ?>
+
+
+
+
+
+                                <?php
+                                //if(!empty($catDetail['prefer_job_location'])) {
+
+                                /*  $location_length = strlen($catDetail['prefer_job_location']);
+
+                                  if($location_length <= 500){?>
+                                  <p class="dtls_company_location"><?php echo $catDetail['prefer_job_location']; ?></p>
+                                  <?php } else{
+                                  $short_location = substr($catDetail['prefer_job_location'], 0, 20);
+                                  print_r($short_location);
+                                  ?>
+
+                                  <p class="dtls_company_location"><?php echo $short_location."erww"; ?></p>
+                                  <?php }
+
+                                  } */
+                                ?>
+
+                            </div>
+
+                            <?php if ($catDetail['show_company_status'] == "No") {
+                                ?>
+                                <div class="col-xs-3 col-sm-2 col-md-2 pull-right">
+                                    <a href="#"> <img src="<?php echo '/upload/client/' . $catDetail['company_logo']; ?>" alt="" class="job_dtls_company_logo img-responsive"></a> 
+                                </div>
+                            <?php } ?> 
+                        </div>
+                        <div class="clearfix"></div>
+
+                        <div class="ctgry_dtls_keyskill_des_container">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-3 col-md-3">
+                                    <p class="ctgry_dtls_keyskill">Preferred Business Area:</p>  
+                                </div>
+                                <div class="col-xs-12 col-sm-9 col-md-9">
+                                    <p class="ctgry_dtls_keyskill">
+                                        <?php $i = 0; ?>
+                                        <?php foreach ($catDetail['prefered_buisness'] as $buisness): ?>
+                                            <?php
+                                            /* $i++;
+                                              if ($i > 5)
+                                              echo '...';
+                                              break; */
+                                            ?>
+                                            <?php echo $buisness['name'] . '  ' ?>
+                                        <?php endforeach; ?>
+                                        &nbsp;
+                                    </p>  
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-3 col-md-3">
+                                    <p class="ctgry_dtls_keyskill">Job Description:</p>  
+                                </div>
+                                <div class="col-xs-12 col-sm-9 col-md-9">
+                                    <?php
+                                    $content = strip_tags($catDetail['job_description'], '<a>');
+                                    $words = explode(" ", $content);
+                                    echo implode(" ", array_splice($words, 0, 5));
+                                    ?>
+                                    ... 
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12 dtls_save_full_container">  
+                            <div class="row">
+                                <!--<div class="col-xs-3 col-sm-1 col-md-1 dtls_save_sprtr">
+                                    <a href="#"><img src="/images/dtls_saved_jobs_icon.png" alt="saved jobs"></a>
+                                </div>-->
+                                <div class="col-xs-12 col-sm-4 col-md-4 dtls_save_sprtr">
+                                    <p>Total Job Opening's:<span class="dtls_total_job"> <?php echo $catDetail['total_job_openings']; ?> </span></p>
+                                </div>
+                                <div class="col-xs-12 col-sm-4 col-md-4 dtls_save_sprtr">
+                                    <?php
+                                    if (!empty($catDetail['posting_date']) && $catDetail['posting_date'] != '0000-00-00') {
+                                        $carbon_start_dt = Carbon::createFromFormat('Y-m-d', $catDetail['posting_date']);
+                                        //echo $carbon_start_dt->toFormattedDateString();
+                                        $carbon_end_dt = Carbon::now();
+                                        $diff = $carbon_start_dt->diff($carbon_end_dt);
+                                        // parts using either ',' or 'and' appropriately
+                                        $ago = ($d = $diff->d) ? $d . ' ' . str_plural('day', $d) : '';
+
+                                        $carbon_job_deadline = Carbon::createFromFormat('Y-m-d', $catDetail['job_deadline']);
+                                    }
+                                    ?>
+
+                                    <p>Job Posted:<span class="dtls_date_posted_job"> <?php echo $carbon_start_dt->toFormattedDateString(); ?></span> </p>
+
+                                </div>
+                                <div class="col-xs-12 col-sm-4 col-md-4">
+                                    <p>Job Deadline:<span class="dtls_date_posted_job"> <?php echo $carbon_job_deadline->toFormattedDateString(); ?></span>  </p>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <!-- End of ctgry_dtls_job_each_container -->
+                <?php endforeach; ?>
+
+
+                <!--<div class="col-xs-12 col-sm-5 col-md-5 no_padding_left ctgry_dtls_job_per_page">
+                    <p>Jobs per page </p> 
+                    <select class="form-control">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select> 
+                </div>-->
+
+
+                <div class="col-xs-12 col-sm-5 col-md-12 pagination_container">
+                    <div class="row">
+                        <div class="pagination">
+                            <!--<nav>
+                                <ul class="pagination"> 
+                                    <li> <a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a> </li>
+                                    <li class="active">
+                                        <span>1 <span class="sr-only">(current)</span></span>
+                                    </li>                    
+                                    <li> <a href="#"><span>2</span></a> </li>                    
+                                    <li>
+                                        <a href="#"> <span>3</span></a>
+                                    </li>                    
+                                    <li>
+                                        <a href="#"><span>4</span></a>
+                                    </li>                    
+                                    <li>
+                                        <a href="#"><span>5</span></a>
+                                    </li>                      
+                                    <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                
+                
+                                </ul>
+                            </nav>  
+                        </div>-->
+                            <?php
+// add at the end of the file after the table
+                            echo $this->paginationControl(
+                                    // the paginator object
+                                    $this->paginator,
+                                    // the scrolling style
+                                    'sliding',
+                                    // the partial to use to render the control
+                                    'partial/paginator.phtml', array('params' => $params)
+                            );
+                            ?>
+                        </div>
+                        <!-- End of Pagination -->
+                    </div>
+
+                </div>   
+
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-sm-12 col-md-12 common_google_ads">
+        <div class="row">
+            <!-- /85406138/Chakri_Category_B2_970x90 -->
+            <div id='div-gpt-ad-1440659863993-0'>
+                <script type='text/javascript'>
+                    googletag.cmd.push(function() {
+                        googletag.display('div-gpt-ad-1440659863993-0');
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('.category_select_click').click(function() {
+                event.preventdefault();
+            });
+
+            $('.sort_short_li').click(function() {
+                $('#ctgry_dtls_sort_short_icon').css('background-position', '0 -114px');
+                $('#ctgry_dtls_sort_dtls_icon').css('background-position', '0 0px');
+                $(this).addClass('active');
+                $('.sort_dtls_li').removeClass('active');
+                $('.ctgry_dtls_keyskill_des_container').hide(400);
+            });
+
+            $('.sort_dtls_li').click(function() {
+                $('#ctgry_dtls_sort_dtls_icon').css('background-position', '0 -102px');
+                $('#ctgry_dtls_sort_short_icon').css('background-position', '0 -12px');
+                $(this).addClass('active');
+                $('.sort_short_li').removeClass('active');
+                $('.ctgry_dtls_keyskill_des_container').show(400);
+            });
+            $('.ctgry_dtls_job_each_container').hover(function() {
+                $(this).children('.dtls_save_full_container').css('box-shadow', 'inset 0px -3px 0px 0px rgba(99,99,99,0.43)');
+            }, function() {
+                $(this).children('.dtls_save_full_container').css('box-shadow', 'none');
+            });
+
+            $('.spotlight_details_container p').eq(1).nextAll().hide();
+
+
+            $('.functional_area_search').click(function() {
+                $('.industry_list, .job_level_list, .education_list, .employer_list, .job_type_list').hide();
+                $('.functional_area_list').slideToggle(function() {
+                    var listItem = $('.functional_area_list').css('display');
+                    if (listItem === "block") {
+                        $('.functional_area_search').css('background', 'url(../images/ctgry_dtls_drop_icon_down.jpg) no-repeat left 15px');
+
+                    } else {
+                        $('.functional_area_search').css('background', 'url(../images/ctgry_dtls_drop_icon.jpg) no-repeat left 15px');
+                    }
+                });
+            });
+
+            $('.industry_type_search').click(function() {
+                $('.functional_area_list, .job_level_list, .education_list, .employer_list, .job_type_list').hide();
+                $('.industry_list').slideToggle(function() {
+                    var listItem = $('.industry_list').css('display');
+                    if (listItem === "block") {
+                        $('.industry_type_search').css('background', 'url(../images/ctgry_dtls_drop_icon_down.jpg) no-repeat left 15px');
+
+                    } else {
+                        $('.industry_type_search').css('background', 'url(../images/ctgry_dtls_drop_icon.jpg) no-repeat left 15px');
+                    }
+                });
+            });
+
+            $('.job_level_search').click(function() {
+                $('.functional_area_list,.industry_list, .education_list, .employer_list, .job_type_list').hide();
+                $('.job_level_list').slideToggle(function() {
+                    var listItem = $('.job_level_list').css('display');
+                    if (listItem === "block") {
+                        $('.job_level_search').css('background', 'url(../images/ctgry_dtls_drop_icon_down.jpg) no-repeat left 15px');
+
+                    } else {
+                        $('.job_level_search').css('background', 'url(../images/ctgry_dtls_drop_icon.jpg) no-repeat left 15px');
+                    }
+                });
+            });
+
+            $('.by_education_search').click(function() {
+                $('.functional_area_list, .job_level_list, .industry_list, .employer_list, .job_type_list').hide();
+                $('.education_list').slideToggle(function() {
+                    var listItem = $('.education_list').css('display');
+                    if (listItem === "block") {
+                        $('.by_education_search').css('background', 'url(../images/ctgry_dtls_drop_icon_down.jpg) no-repeat left 15px');
+
+                    } else {
+                        $('.by_education_search').css('background', 'url(../images/ctgry_dtls_drop_icon.jpg) no-repeat left 15px');
+                    }
+                });
+            });
+
+            $('.by_employer_search').click(function() {
+                $('.functional_area_list, .job_level_list, .industry_list, .education_list, .job_type_list').hide();
+                $('.employer_list').slideToggle(function() {
+                    var listItem = $('.employee_list').css('display');
+                    if (listItem === "block") {
+                        $('.by_employee_search').css('background', 'url(../images/ctgry_dtls_drop_icon_down.jpg) no-repeat left 15px');
+
+                    } else {
+                        $('.by_employee_search').css('background', 'url(../images/ctgry_dtls_drop_icon.jpg) no-repeat left 15px');
+                    }
+                });
+            });
+
+            $('.job_type').click(function() {
+                $('.functional_area_list, .job_level_list, .industry_list, .education_list, .employer_list').hide();
+                $('.job_type_list').slideToggle(function() {
+                    var listItem = $('.job_type_list').css('display');
+                    if (listItem === "block") {
+                        $('.job_type').css('background', 'url(../images/ctgry_dtls_drop_icon_down.jpg) no-repeat left 15px');
+
+                    } else {
+                        $('.job_type').css('background', 'url(../images/ctgry_dtls_drop_icon.jpg) no-repeat left 15px');
+                    }
+                });
+
+            });
+            //Remove margin bottom from last item
+            $('.dtls_save_full_container').eq(9).css('margin-bottom', '0');
+
+        });
+    </script>

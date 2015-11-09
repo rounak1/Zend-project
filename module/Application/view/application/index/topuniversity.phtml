@@ -1,0 +1,144 @@
+<?php
+
+echo "<pre>";
+echo $this->topunv["institute_logo"];
+echo "</pre>";
+//exit;
+?>
+<div class="hidden-xs col-sm-12 col-md-12 common_google_ads">
+    <img src="<?php echo $this->basePath('/images/job_details_t1_ad.jpg'); ?>" alt="ad" class="center-block">
+</div>
+
+<div class="col-xs-12 col-sm-12 col-md-12 top_employer_dtail">
+    <div class="job_details_left_container">
+        <?php if (!empty($this->topunv)){?>
+        <div class="col-xs-12 col-sm-12 col-md-12 no_padding_left">
+            <img src="<?php echo $this->topunv["institute_logo"]; ?>" width="150" height="145" alt="University logo" > 
+        </div>
+        <?php }?>
+        <div class="clearfix"></div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12 top_employer_content">
+            <div class="col-xs-12 col-sm-2 col-md-2 top_employer_left_container no_padding_left">
+                <?php if (!empty($this->topunv)){?>
+                <div class="top_employer_header_left">
+                    <h3><?php echo $this->topunv["name"]; ?></h3>            
+                </div>
+                <ul class="top_employer_sidebar">
+                    <?php if ($this->topunv["about_courses"] != "") { ?>                    
+                        <li class="about" style="cursor:pointer;">about courses</li>
+                    <?php } ?>
+<!--
+
+                    <?php //if ($this->topunv["address"] != "") { ?>                    
+                        <li class="contact">Contact Us</li>
+                    <?php //} ?>
+
+                    <?php //if ($this->topunv["company_url"] != "") { ?>                    
+                        <li class="visit">Visit Us</li>
+                    <?php //} ?>
+-->
+
+                </ul>
+                <?php } ?>
+                
+                <p class="top_employer_sidebar_add"><strong>For any support: </strong><br>
+                    19 Karwanbazar<br>
+                    (2nd Floor),
+                    Dhaka<br>-1215, Bangladesh. 
+                    <br>
+                    P: +880 2 8180081 <br>
+                    C:+8801678660819<br>-20
+                </p>
+                <div class="top_employer_sidebar_web_add"><a href=""> www.chakri.com </a><br>THE ONLY CAREER PORTAL 
+                    OF THE COUNTRY! </div>
+            </div>
+            <div class="col-xs-12 col-sm-7 col-md-7">
+                <?php if (!empty($this->topunv)) { ?>
+                    <div class="about_us">
+                        <?php if ($this->topunv["about_courses"] != "") { ?>
+                            <p style="border-bottom: 1px solid #f2f2f2;"><strong class="title">About Courses</strong></p>
+                            <?php echo $this->topunv["about_courses"]; ?>
+                        <?php } ?>
+                    </div>
+                    <!--
+                    <div class="contact_us" style="display:none;">
+                        <?php if ($this->employer["address"] != "") { ?>                    
+                            <?php echo $this->employer["address"]; ?>
+                        <?php } ?>   
+                    </div>
+                    <div class="visit_us" style="display:none;">
+                        <?php if ($this->employer["company_url"] != "") { ?>
+                            <p style="border-bottom: 1px solid #f2f2f2;"><strong>Visit Us</strong></p>
+                            <?php echo $this->employer["company_url"]; ?>
+                        <?php } ?>   
+                    </div>
+-->
+                <?php }  else { ?>
+                <div class="warning">This company is not our Top University.</div>
+                <?php }?>
+            </div>
+            <div class="col-xs-12 col-sm-3 col-md-3"><img class="center-block img-responsive" alt="ad" src="/images/dtls_right_ad_300_600.jpg"></div>
+        </div>
+        <div class="clearfix"></div>
+
+    </div> 
+
+</div>
+
+<style type="text/css">
+    .top_employer_inner_content{
+        display: none;
+    }
+    #about_us{
+        display: block;
+    }
+</style>
+<script type="text/javascript">
+
+    $(document).ready(function(){
+        
+        $(".about").click(function(){
+        $(".about_us").show();
+        $(".service_us").hide();
+        $(".career_us").hide();
+        $(".contact_us").hide();
+        $(".visit_us").hide();
+        });
+        
+        $(".service").click(function(){
+        $(".service_us").show();
+        $(".about_us").hide();
+        $(".visit_us").hide();
+        $(".career_us").hide();
+        $(".contact_us").hide();
+        });
+        
+        $(".career").click(function(){
+        $(".career_us").show();
+        $(".about_us").hide();
+        $(".service_us").hide();
+        $(".visit_us").hide();
+        $(".contact_us").hide();
+        });
+        
+        $(".contact").click(function(){
+        $(".contact_us").show();
+        $(".about_us").hide();
+        $(".service_us").hide();
+        $(".career_us").hide();
+        $(".visit_us").hide();
+        });
+        
+        $(".visit").click(function(){
+        $(".visit_us").show();
+        $(".about_us").hide();
+        $(".service_us").hide();
+        $(".career_us").hide();
+        $(".contact_us").hide();
+
+        });
+
+    });
+
+</script>

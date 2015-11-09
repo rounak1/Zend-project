@@ -1,0 +1,102 @@
+<section class="content">
+
+    <!-- Default box -->
+    <div class="box box-default">
+        <div class="box-header with-border">
+
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h3 class="box-title pull-left page-heading">Government Jobs</h3>
+                    <div class="pull-right">
+                        <div class="btn-group">
+                            <a class="btn btn-success"  href="<?php echo "/admin/job/govtjobadd"; ?>" ><i class="fa fa-plus"></i> Add New</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box-body">
+            <?php
+            if ($this->flashMessenger()->hasCurrentSuccessMessages()) {
+                ?>
+                <div class="box box-success box-solid alert-success">
+                    <div class="box-tools pull-right">
+                        <button data-widget="remove" class="btn btn-box-tool text-gray"><i class="fa fa-times"></i></button>                    
+                    </div><!-- /.box-tools -->
+
+                    <div class="box-body">
+                        <?php
+                        //$flashMessenger = $this->flashMessenger();
+                        //if ($flashMessenger->hasMessages()) {     
+                        echo $this->flashMessenger()
+                                ->setMessageOpenFormat('<strong>')
+                                ->setMessageCloseString('</strong>')
+                                ->render('success');
+                        //} 
+                        ?> 
+                    </div><!-- /.box-body -->
+                </div><!-- /.box -->
+                <?php
+            }
+            ?>
+
+            <table id="users-table" class="table table-bordered table-striped table-condensed">
+                <thead>
+                    <tr>
+                        <th>Job Title</th>
+                        <th>Company</th>
+                        <th>Job Type</th>
+                        <th>Deadline</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tfoot>
+		            <tr>
+                        <th>Job Title</th>
+                        <th>Company</th>
+                        <th>Job Type</th>
+		            </tr>
+            	</tfoot>
+            </table>
+        </div><!-- /.box-body -->
+
+    </div><!-- /.box -->
+
+</section><!-- /.content -->
+
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        $('#users-table').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: {
+                url: '/chkapi/api/govtjob',
+                type: 'post'
+            },
+            columns: [
+                {data: 'job_title', name: 'chk_jobs.job_title'},
+                {data: 'job_company_name', name: 'chk_jobs.job_company_name'},
+                {data: 'job_type', name: 'chk_jobs.job_type'},
+                {data: 'job_deadline', name: 'chk_jobs.job_deadline'},
+                {data: 'status', name: 'chk_jobs.status'},
+                {data: 'action', name: 'action', orderable: false, searchable: false}
+            ],
+           initComplete: function () {
+            this.api().columns().every(function () {
+                var column = this;
+                var input = document.createElement("input");
+                $(input).appendTo($(column.footer()).empty())
+                .on('change', function () {
+                    var val = $.fn.dataTable.util.escapeRegex($(this).val());
+
+                    column.search(val ? val : '', true, false).draw();
+                });
+            });
+        }
+        
+
+        });
+    });
+</script>

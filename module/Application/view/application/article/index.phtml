@@ -1,0 +1,118 @@
+<div class="hidden-xs common_google_ads t1-position-ad">
+    <!-- /85406138/Chakri_Articles_T1_970x90 -->
+    <div id='div-gpt-ad-1444651027888-0'>
+        <script type='text/javascript'>
+            googletag.cmd.push(function() {
+                googletag.display('div-gpt-ad-1444651027888-0');
+            });
+        </script>
+    </div>
+</div>
+
+<div class="col-xs-12 col-sm-12 col-md-12 special_page_for_ad article_page_container">
+    <div class="pagination_top_container">
+        <ul>
+            <li><a href="/articles">Home</a></li>
+            <li>Article</li>
+            <div class="clearfix"></div>
+        </ul>
+    </div>
+
+    <div class="row">    
+        <div class="col-xs-12 col-sm-7 col-md-7 article_home_navigation">
+            <ul class="nav nav-pills">
+                <li <?php echo ($active == "home") ? "class=active" : ""; ?>><a href="/articles">Home</a></li>
+                <?php foreach ($cats as $cat) { ?>
+                    <li role="presentation" <?php echo ($active == $cat['id']) ? "class=active" : ""; ?>><a href="/articles/<?php echo $cat['id']; ?>"><?php echo $cat['title']; ?></a></li>
+                <?php } ?>
+                <div class="clearfix"></div>
+            </ul>
+        </div>
+        <div class="col-xs-12 col-sm-7 col-md-7 all_article_container">
+            <?php
+            if (count($this->paginator)) {
+                foreach ($this->paginator as $article) {
+                    ?>
+                    <div class="article_each_container">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-3 col-md-3">
+                                <img src="<?php echo ($article['article_image'] != NULL) ? $this->basepath('../images/article/' . $article['article_image']) : $this->basepath('/img/default.jpg'); ?>" class="img-responsive center-block" alt="Article image" />
+                            </div>
+                            <div class="col-xs-12 col-sm-9 col-md-9">
+                                <h2><a href="/articleDetails/<?php echo $article['id']; ?>"><?php echo $article['title']; ?></a></h2>
+                                <p class="text-justify">
+                                    <?php
+                                    $short_description = explode(" ", $article['description']);
+                                    echo strip_tags(implode(" ", array_splice($short_description, 0, 50)) . " ...");
+                                    ?>
+                                </p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <?php
+                }
+            } else {
+                ?>
+                <div class="article_each_container">
+                    <p class="text-justify">No article yet under this category</p>
+                </div>
+            <?php } ?>
+        </div>
+
+        <div class="col-md-5 about_right_ad_container pull-right">
+            <div class="hidden-xs common_google_ads no_top_margin">
+                <!-- /85406138/Chakri_Articles_R1_336x280 -->
+                <div id='div-gpt-ad-1444719776818-0' style='height:280px; width:336px;'>
+                    <script type='text/javascript'>
+                        googletag.cmd.push(function() {
+                            googletag.display('div-gpt-ad-1444719776818-0');
+                        });
+                    </script>
+                </div>
+
+            </div>
+
+            <div class="hidden-xs common_google_ads"> 
+                <!-- /85406138/Chakri_Articles_F1_300x600 -->
+                <div id='div-gpt-ad-1444719812009-0' style='height:600px; width:300px;'>
+                    <script type='text/javascript'>
+                        googletag.cmd.push(function() {
+                            googletag.display('div-gpt-ad-1444719812009-0');
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+    </div>
+    <?php
+    echo $this->paginationControl(
+            $this->paginator, 'sliding', 'partial/paginator.phtml', array('route' => 'articles')
+    );
+    ?>
+
+    <div class="hidden-xs common_google_ads"> 
+        <!-- /85406138/Chakri_Articles_L1_650x250 -->
+        <div id='div-gpt-ad-1444719862461-0' style='height:250px; width:650px;'>
+            <script type='text/javascript'>
+                googletag.cmd.push(function() {
+                    googletag.display('div-gpt-ad-1444719862461-0');
+                });
+            </script>
+        </div>
+    </div>
+</div>
+
+<div class="hidden-xs col-sm-12 col-md-12 common_google_ads">
+    <!-- /85406138/Chakri_About-Policy-Terms_B2_970x90 -->
+    <div id='div-gpt-ad-1444720307947-0'>
+        <script type='text/javascript'>
+            googletag.cmd.push(function() {
+                googletag.display('div-gpt-ad-1444720307947-0');
+            });
+        </script>
+    </div>
+</div>

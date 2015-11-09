@@ -1,0 +1,145 @@
+<?php use Carbon\Carbon;  ?> 
+<section class="content">    
+
+<!--    <div class="callout callout-info">                
+        <h4>Tip!</h4>
+        <p>
+            Add the layout-top-nav class to the body tag to get this layout. 
+            This feature can also be used with a sidebar! So use this class if
+            you want to remove the custom dropdown menus from the navbar and use 
+            regular links instead.
+        </p>
+
+    </div>-->
+    <div class="row">
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-aqua">
+                <div class="inner">
+                    <h3><?php echo $this->total_job_count; ?></h3>
+                    <p>Total Jobs</p>
+                </div>
+                <div class="icon">
+                    <i class="ion-android-laptop"></i>
+                </div>
+                <a href="/admin/job" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div><!-- ./col -->
+
+    
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-green">
+                <div class="inner">
+                    <h3><?php echo $this->total_seeker_count; ?></h3>
+                    <p>Total number of Resumes</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-ios-paper"></i>
+                </div>
+                <a href="/admin/seeker" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div><!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-yellow">
+                <div class="inner">
+                    <h3><?php echo $this->total_user_count; ?></h3>
+                    <p>User Registrations</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-ios-people"></i>
+                </div>
+                <a href="/admin/users" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div><!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-red">
+                <div class="inner">
+                    <h3><?php echo $this->total_employer_count; ?></h3>
+                    <p>Total number of Employer</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-android-contacts"></i>
+                </div>
+                <a href="/admin/company" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div><!-- ./col -->    
+        
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-yellow">
+                <div class="inner">
+                    <h3><?php echo $this->total_contact_inquiry; ?></h3>
+                    <p>Total Contact inquiry's </p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-android-contacts"></i>
+                </div>
+                <a href="/admin/contact" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div><!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-aqua">
+                <div class="inner">
+                    <h3><?php echo $this->total_abuse_reports;?></h3>
+                    <p>Total number of Abuse Reports</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-flag"></i>
+                </div>
+                <a href="/admin/reportabuse" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div><!-- ./col -->
+
+        <!-- Main row -->
+    </div><!-- /.row -->
+    
+    
+    <!-- Information Box -->
+    <div class="box box-default">
+        <div class="box-header with-border">
+            <h3 class="box-title">Information Box</h3>
+        </div>
+        <div class="box-body">
+            The great content goes here
+        </div><!-- /.box-body -->
+    </div>
+    
+    <div class="box box-default collapsed-box">
+        <div class="box-header with-border">
+            <h3 class="box-title">last login informations</h3>
+            <div class="box-tools pull-right">
+                <button class="btn btn-box-tool" data-widget="collapse" title="Expand"><i class="fa fa-plus"></i></button>
+                <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+            </div>
+        </div>
+
+        <div class="box-body" style="display: none;">
+            <ol>
+                
+                <?php foreach ($admin_last_login as $row): ?>        
+                        
+                        
+                        
+                <li>
+                    <?php
+                                echo $row['full_name'];
+                                if ($row['updated_at'] !=NULL)
+                                {
+                                    $dt = Carbon::createFromFormat('Y-m-d H:i:s',$row['updated_at']);
+                                    echo ', last login : '.$dt->toFormattedDateString();
+                                }
+                              ?>
+                </li>
+                
+               <?php endforeach;?>
+            </ol>
+        </div><!-- /.box -->    
+    </div>
+</section>
+    
+
+

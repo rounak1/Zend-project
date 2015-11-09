@@ -1,0 +1,113 @@
+<div class="col-xs-12 col-sm-12 col-md-12 job_by_role_container">
+    <div class="col-xs-12 col-sm-12 col-md-12 no_padding_left pagination_top_container">
+        <ul>
+            <li><a href="">Home</a></li>
+            <li>Companies</li>           
+            <div class="clearfix"></div>
+        </ul>        
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-12 no_padding_left total_jobs_by_role">
+        <h2>Jobs By Companies</h2>
+        <p>
+            This page is an overview of jobs by Company. Click on the companies below to see related jobs based on your specific criteria.
+            For more customized job search options, use our expanded <a href="/advancesearch">job search</a> page.
+        </p>
+
+        <div class="list_full_container">
+
+            <?php foreach ($companies as $company ):?>
+                
+                <div class="col-xs-12 col-sm-4 col-md-4 no_padding_left">
+                    <div class="list_item_container">
+                    
+                    <ul>
+                        <?php //foreach ($companies as $company ):?>
+                            <li><a href="/job?emp=<?php echo $company['employer_id']?>"><?php echo $company['full_name']; ?><span class="total_job">(<?php echo $company['total_job']; ?>)</span></a></li>
+                        <?php //endforeach;?>
+                    </ul>
+                    
+                    
+                </div>
+            </div>    
+            <?php endforeach;?>        
+                    
+                    <!-- <ul>
+                        <li><a href="#">ALCON BANGLADESH <span class="total_job">(44)</span></a></li>
+                        <li><a href="#">EN International Education Consultants<span class="total_job">(29)</span></a></li>
+                        <li><a href="#"> Symantec Technology Ltd.<span class="total_job">(3)</span></a></li>
+                        <li><a href="#"> The Palace Resort & Spa<span class="total_job">(20)</span></a></li>
+                        <li><a href="#">BPO / Data Entry / Operator <span class="total_job">(4)</span></a></li>
+                        <li><a href="#">Medical / Healthcare <span class="total_job">(3)</span></a></li>
+                        <li><a href="#">Engineering / Diploma <span class="total_job">(73)</span></a></li>
+                        <li><a href="#">IT / Telecommunication <span class="total_job">(18)</span></a></li>
+                        <li><a href="#">Arts &amp; Creative / Graphics <span class="total_job">(2)</span></a></li>
+                        <li><a href="#">Advertising / Media <span class="total_job">(0)</span></a></li>
+                        <li><a href="#">Admin / Mgt / Operations <span class="total_job">(0)</span></a></li>
+                        <li><a href="#">Internships <span class="total_job">(0)</span></a></li>
+                        <li><a href="#">Real Estate/Archi./Interior <span class="total_job">(0)</span></a></li>
+                        <li><a href="#">Finance / Investments <span class="total_job">(0)</span></a></li>
+                        <li><a href="#">ALCON BANGLADESH <span class="total_job">(0)</span></a></li>
+                        <li><a href="#"> Symantec Technology Ltd. <span class="total_job">(0)</span></a></li>
+                    </ul>
+                </div>
+            </div>-->
+            
+            <!--<div class="col-xs-12 col-sm-4 col-md-4 no_padding_left">
+                <div class="list_item_container">
+                    <ul>
+                        <li><a href="#">ALCON BANGLADESH <span class="total_job">(44)</span></a></li>
+                        <li><a href="#">EN International Education Consultants<span class="total_job">(29)</span></a></li>
+                        <li><a href="#"> Symantec Technology Ltd.<span class="total_job">(3)</span></a></li>
+                        <li><a href="#"> The Palace Resort & Spa<span class="total_job">(20)</span></a></li>
+                        <li><a href="#">BPO / Data Entry / Operator <span class="total_job">(4)</span></a></li>
+                        <li><a href="#">Medical / Healthcare <span class="total_job">(3)</span></a></li>
+                        <li><a href="#">Engineering / Diploma <span class="total_job">(73)</span></a></li>
+                        <li><a href="#">IT / Telecommunication <span class="total_job">(18)</span></a></li>
+                        <li><a href="#">Arts &amp; Creative / Graphics <span class="total_job">(2)</span></a></li>
+                        <li><a href="#">Advertising / Media <span class="total_job">(0)</span></a></li>
+                        <li><a href="#">Admin / Mgt / Operations <span class="total_job">(0)</span></a></li>
+                        <li><a href="#">Internships <span class="total_job">(0)</span></a></li>
+                        <li><a href="#">Real Estate/Archi./Interior <span class="total_job">(0)</span></a></li>
+                        <li><a href="#">Finance / Investments <span class="total_job">(0)</span></a></li>
+                        <li><a href="#">ALCON BANGLADESH <span class="total_job">(0)</span></a></li>
+                        <li><a href="#"> Symantec Technology Ltd. <span class="total_job">(0)</span></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-4 col-md-4 no_padding_left">
+                <div class="list_item_container">
+                    <ul>
+                        <li><a href="#">ALCON BANGLADESH <span class="total_job">(44)</span></a></li>
+                        <li><a href="#"> The Palace Resort & Spa <span class="total_job">(29)</span></a></li>
+                        <li><a href="#"> Symantec Technology Ltd. <span class="total_job">(3)</span></a></li>
+                        <li><a href="#">Commercial/Supply Chain <span class="total_job">(20)</span></a></li>
+                        <li><a href="#">BPO / Data Entry / Operator <span class="total_job">(4)</span></a></li>
+                        <li><a href="#">Medical / Healthcare <span class="total_job">(3)</span></a></li>
+                        <li><a href="#">Engineering / Diploma <span class="total_job">(73)</span></a></li>
+                        <li><a href="#">IT / Telecommunication <span class="total_job">(18)</span></a></li>
+                        <li><a href="#">Arts &amp; Creative / Graphics <span class="total_job">(2)</span></a></li>
+                        <li><a href="#">Advertising / Media <span class="total_job">(0)</span></a></li>
+                        <li><a href="#">Admin / Mgt / Operations <span class="total_job">(0)</span></a></li>
+                        <li><a href="#">Internships <span class="total_job">(0)</span></a></li>
+                        <li><a href="#">Real Estate/Archi./Interior <span class="total_job">(0)</span></a></li>
+                        <li><a href="#">Finance / Investments <span class="total_job">(0)</span></a></li>
+                        <li><a href="#"> Symantec Technology Ltd. <span class="total_job">(0)</span></a></li>
+                        <li><a href="#"> EN International Education Consultants <span class="total_job">(0)</span></a></li>
+                    </ul>
+                </div>-->
+                
+                
+                
+                
+                <p class="view_all_roles"><a href="#">View All Company Jobs</a></p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+
+
+    </div>
+
+</div>

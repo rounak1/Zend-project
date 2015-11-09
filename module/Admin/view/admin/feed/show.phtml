@@ -1,0 +1,88 @@
+<?php use Carbon\Carbon;?>
+<?php
+//echo "<pre>";
+//print_r($feed);exit;
+?>
+<section class="content">
+    <!-- Default box -->
+    <div class="box box-default">
+        <form role="form" data-toggle="validator" class="form-horizontal" method="post">
+            <div class="col-lg-12 col-sm-12 col-md-12" id="myfeedback"><a id="print_feedback" href="#" class="feedback_align"> <i class="fa fa-print fa-3x feedback_prnt_icon"></i></a></div>
+            <div class="clearfix"></div>
+            <table id="example1" class="table table-bordered table-striped table-condensed">
+                <thead>
+                <th colspan="2">Feedback Details</th>
+                </thead>
+                <tr>
+                        <td>Type</td>
+                        <td><?php echo $feed["type"]; ?></td>                       
+                    </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td><?php echo $feed["email"]; ?></td>
+                        </tr>
+                    <tr>
+                            <td>Subject</td>
+                            <td><?php echo $feed["subject"]; ?></td>
+                        </tr>
+                        <tr>
+                            <td>Message</td>
+                            <td><?php echo $feed["message"]; ?></td>
+                        </tr>
+                        <tr>
+                            <td>Created At</td>
+                            <td>
+<?php
+                                $dt=Carbon::createFromFormat('Y-m-d H:m:s',$feed["created_at"]);
+                                echo $dt->toFormattedDateString()." / ".$feed["created_at"];
+?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Updated At</td>
+                            <td>
+<?php
+                                $dt=Carbon::createFromFormat('Y-m-d H:m:s',$feed["updated_at"]);
+                                echo $dt->toFormattedDateString()." / ".$feed["updated_at"];
+?>
+                            </td>
+                        </tr>
+            </table>
+            <a class="btn btn-default" href="<?php echo $this->serverUrl()."/admin/feed";?>" role="button">Back</a>
+        </form>
+    </div><!-- /.box -->
+</section><!-- /.content -->
+
+<script src="<?php echo $this->basePath('js/jQuery.print.js'); ?>"></script>
+<script>
+
+    $("body").on("click", "#print_feedback", function (e) {
+
+        //alert ('test');
+        //$("#print_icon").hide();
+
+        $("#myfeedback").print({
+            globalStyles: true,
+            mediaPrint: false,
+            stylesheet: null,
+            noPrintSelector: ".no-print",
+            iframe: true,
+            append: null,
+            prepend: null,
+            manuallyCopyFormValues: true,
+            deferred: $.Deferred()
+        });
+    });
+
+$("#print_icon").show();
+
+</script>
+<style type="text/css">
+    .feedback_align{
+        float: right;
+    }
+    .feedback_prnt_icon{
+        font-size: 24px;
+    }
+    .box{padding:10px;}
+</style>

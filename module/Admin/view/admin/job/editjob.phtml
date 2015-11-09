@@ -1,0 +1,445 @@
+<section class="content">
+<div class="govt_job_ad_form_container box box-default admin_form_bg">
+    <form role="form" data-toggle="validator" class="form-horizontal register_employer_form" method="post">
+
+        <h1>Add Newspaper Job</h1>
+        
+            <?php 
+            if (count($this->error_messages) > 0) { ?>
+            <div class="alert alert-danger">
+                <?php                                 
+                foreach ($this->error_messages[0] as $messageId => $message) {                        
+                        echo "<p>  $message </p>";           
+                }
+                ?>   
+            </div> 
+            <?php } ?>
+
+            <?php if (count($this->success_messages) > 0) { ?>
+            <div class="alert alert-success">
+                <?php
+                foreach ($this->success_messages as $messageId => $message) {
+                    echo "<p>  $message </p>";
+                }
+                ?>   
+            </div>
+            <?php } ?>
+        
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 col-md-2 control-label">Company Name:</label>
+            <div class="col-sm-5 col-md-5">
+                <input type="text" class="form-control" id="job_company_name" name="job_company_name" placeholder="Company Name" value="<?php echo ($this->post_data["job_company_name"] != "") ? $this->post_data["job_company_name"] : $this->results->job_company_name; ?>" required />
+            </div>
+            <div class="clearfix"></div>
+        </div>        
+        
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 col-md-2 control-label"> Company Information:</label>
+            <div class="col-sm-10 col-md-10">
+                <textarea id="company_description" name="company_description" rows="8" cols="80"><?php echo ($this->post_data["company_description"] != "") ? $this->post_data["company_description"] : $this->results->company_description; ?></textarea>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 col-md-2 control-label"> Job Title/ Position:</label>
+            <div class="col-sm-5 col-md-5">
+                <input type="text" class="form-control" id="job_title" name="job_title" placeholder="position" required value="<?php echo ($this->post_data["job_title"] != "") ? $this->post_data["job_title"] : $this->results->job_title; ?>">
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 col-md-2 control-label">Job Industry</label>
+            <div class="col-sm-10 col-md-10">
+                <div class="check_box_scroller_container">
+                    <?php
+                    $job_industry_id = $this->results->job_industry_id;
+                    $jobs_industry   = explode(",", $job_industry_id);
+
+                    foreach($this->job_industry as $industry)
+                    {
+                       ?>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" id="checkboxSuccess" name="job_industry_id[]" value="<?php echo $industry["id"]; ?>" <?php echo (! isset($this->post_data["job_industry_id"]) && in_array($industry["id"], $jobs_industry)) ? 'checked="checked"' : '' ?> <?php echo (isset($this->post_data["job_industry_id"]) && in_array($industry["id"], $this->post_data["job_industry_id"])) ? 'checked="checked"' : '' ?> />
+                                <?php echo $industry["name"]; ?>
+                            </label>
+                         </div>
+                       <?php
+                    }    
+                    ?>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>  
+        
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 col-md-2 control-label">Job Category: </label>
+            <div class="col-sm-10 col-md-10">
+                <div class="check_box_scroller_container">
+                    <?php
+                    $job_category_id = $this->results->job_category_id;
+                    $job_category    = explode(",", $job_category_id);
+                    
+                    foreach($this->job_category as $category)
+                    {
+                       ?>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" id="checkboxSuccess" name="job_category_id[]" value="<?php echo $category["id"]; ?>" <?php echo (! isset($this->post_data["job_category_id"]) && in_array($category["id"], $job_category)) ? 'checked="checked"' : '' ?>  <?php echo (isset($this->post_data["job_category_id"]) && in_array($category["id"], $this->post_data["job_category_id"])) ? 'checked="checked"' : '' ?> />
+                                <?php echo $category["name"]; ?>
+                            </label>
+                         </div>
+                       <?php
+                    }    
+                    ?>                  
+                    
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 col-md-2 control-label">Job Level: </label>
+            <div class="col-sm-10 col-md-10">
+                <div class="check_box_scroller_container">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="job_level[]" id="job_level" value="Entry">
+                            Entry
+                        </label>
+                    </div>
+
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="job_level[]"  id="job_level" value="Mid">
+                            Mid
+                        </label>
+                    </div> 
+
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="job_level[]"  id="job_level" value="Top">
+                           Top
+                        </label>
+                    </div>
+
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 col-md-2 control-label">Job Type: </label>
+            <div class="col-sm-10 col-md-10">
+                <div class="check_box_scroller_container">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" id="job_type" name="job_type[]" value="Full Time">
+                            Full Time
+                        </label>
+                    </div>
+
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" id="job_type" name="job_type[]"  value="Part Time">
+                            Part Time
+                        </label>
+                    </div> 
+
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" id="job_type" name="job_type[]"  value="Contractual">
+                            Contractual
+                        </label>
+                    </div> 
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" id="job_type" name="job_type[]"  value="Intern">
+                            Intern
+                        </label>
+                    </div>
+
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 col-md-2 control-label">  Job Location: </label>
+            <div class="col-sm-5 col-md-5">
+                <input type="text" class="form-control" id="job_location" name="job_location" placeholder="Enter job location" required value="<?php echo ($this->post_data["job_location"] != "") ? $this->post_data["job_location"] : $this->results->job_location; ?>">
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 col-md-2 control-label">   No of Vacancies: </label>
+            <div class="col-sm-5 col-md-5">
+                <input type="text" class="form-control" id="no_of_vacencies" name="no_of_vacencies" placeholder="Enter Number of vacancies" required value="<?php echo ($this->post_data["no_of_vacencies"] != "") ? $this->post_data["no_of_vacencies"] : $this->results->no_of_vacencies; ?>">
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 col-md-2 control-label">  Job Requirements:</label>
+            <div class="col-sm-10 col-md-10">
+                <textarea id="job_requirement" name="job_requirement" rows="8" cols="80"><?php echo ($this->post_data["job_requirement"] != "") ? $this->post_data["job_requirement"] : $this->results->job_requirement; ?></textarea>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 col-md-2 control-label"> Job Description: </label>
+            <div class="col-sm-10 col-md-10">
+                <textarea id="job_description" name="job_description" rows="8" cols="80"><?php echo ($this->post_data["job_description"] != "") ? $this->post_data["job_description"] : $this->results->job_description; ?></textarea>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 col-md-2 control-label"> Education: </label>
+            <div class="col-sm-10 col-md-10">
+                <textarea id="job_education" name="job_education" rows="8" cols="80"><?php echo ($this->post_data["job_education"] != "") ? $this->post_data["job_education"] : $this->results->job_education; ?></textarea>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 col-md-2 control-label"> Experience: </label>
+            <div class="col-sm-10 col-md-10">
+                <textarea id="job_experienced" name="job_experienced" rows="8" cols="80"><?php echo ($this->post_data["job_experienced"] != "") ? $this->post_data["job_experienced"] : $this->results->job_experienced; ?></textarea>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 col-md-2 control-label">   Age Limit: </label>
+            <div class="col-sm-5 col-md-5">
+                <input type="text" class="form-control" id="age_limit_from" name="age_limit_from" placeholder="Age Limit" required value="<?php echo ($this->post_data["age_limit_from"] != "") ? $this->post_data["age_limit_from"] : $this->results->age_limit_from; ?>">
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 col-md-2 control-label">   Salary: </label>
+            <div class="col-sm-5 col-md-5">
+                <input type="text" class="form-control" id="salary_range" name="salary_range" placeholder="Salary range" required value="<?php echo ($this->post_data["salary_range"] != "") ? $this->post_data["salary_range"] : $this->results->salary_range; ?>">
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 col-md-2 control-label">   Direct URL: </label>
+            <div class="col-sm-5 col-md-5">
+                <input type="text" class="form-control" id="direct_url" name="direct_url" placeholder="www.url.com" required value="<?php echo ($this->post_data["direct_url"] != "") ? $this->post_data["direct_url"] : $this->results->direct_url; ?>">
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 col-md-2 control-label">  Instruction To Apply: </label>
+            <div class="col-sm-10 col-md-10">
+                <textarea id="job_apply_instruction" name="job_apply_instruction" rows="8" cols="80"><?php echo ($this->post_data["job_apply_instruction"] != "") ? $this->post_data["job_apply_instruction"] : $this->results->job_apply_instruction; ?></textarea>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 col-md-2 control-label">  Company Address: </label>
+            <div class="col-sm-10 col-md-10">
+                <textarea id="compnay_address" name="compnay_address" rows="8" cols="80"><?php echo ($this->post_data["compnay_address"] != "") ? $this->post_data["compnay_address"] : $this->results->compnay_address; ?></textarea>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 col-md-2 control-label"> Other Information: </label>
+            <div class="col-sm-10 col-md-10">
+                <textarea id="other_information" name="other_information" rows="8" cols="80"><?php echo ($this->post_data["other_information"] != "") ? $this->post_data["other_information"] : $this->results->other_information; ?></textarea>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 col-md-2 control-label">Published In:</label>
+            <div class="col-sm-5 col-md-5">
+                <select class="form-control" name="published">
+                    <option>The Daily Prothom Alo</option>
+                    <option>The Daily Star</option>
+                    <option>The Financial Express</option>
+                    <option>The Daily Naya Diganta</option>
+                    <option>The Independent</option>
+                    <option>The Daily Jugantor</option>
+                    <option>The Daily Ittefaq</option>
+                    <option>Samakal</option>
+                    <option>Others</option>
+                </select>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 col-md-2 control-label"> Posting Date:</label>
+            <div class="col-sm-5 col-md-5">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </div>
+                    <input type="text" name="posting_date" class="form-control" data-inputmask="'alias': 'yyyy-mm-dd'" data-mask/>
+                </div>                
+            </div>
+            
+            <div class="clearfix"></div>
+        </div>
+                
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 col-md-2 control-label">Apply Deadline:</label>
+            <div class="col-sm-5 col-md-5">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </div>
+                    <input type="text" name="job_deadline" class="form-control" data-inputmask="'alias': 'yyyy-mm-dd'" data-mask/>
+                </div>                
+            </div>
+            
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 col-md-2 control-label">Govt. Job Image:</label>
+            <div class="col-sm-5 col-md-5">
+                <input type="file" id="image-file">
+                
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 col-md-2 control-label">Is Govt. Job? </label>
+            <div class="col-sm-5 col-md-5">
+                
+                <label>
+                    <input type="radio" name="govtJobStatus" value="1" class="minimal" />Yes
+            </label>
+            <label>
+                <input type="radio" name="govtJobStatus" value="0" class="minimal" checked />No
+            </label>
+
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 col-md-2 control-label"> Is Walk-in Interview? </label>
+            <div class="col-sm-5 col-md-5">
+                
+                <label>
+                    <input type="radio" name="walk_in_active" value="1" class="minimal" />Yes
+            </label>
+            <label>
+                <input type="radio" name="walk_in_active" value="0" class="minimal" checked/>No
+            </label>
+
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 col-md-2 control-label">Is Active?</label>
+            <div class="col-sm-5 col-md-5">
+                
+                <label>
+                    <input type="radio" name="status" value="1" class="minimal" checked/>Yes
+            </label>
+            <label>
+                <input type="radio" name="status" value="0" class="minimal"/>No
+            </label>
+
+            </div>
+            <div class="clearfix"></div>
+        </div>     
+        
+
+        <div class="form-group">
+            <div class=" col-xs-12 col-sm-6 col-md-6 col-sm-offset-2 col-md-offset-2 btn_submit">
+                <button type="submit" class="btn btn-primary pull-left">Submit</button>
+                <a class="btn btn-default" href="<?php echo $prev_url; ?>" role="button">Back</a>
+            </div>                                            
+        </div>            
+        <div class="clearfix"></div>
+        
+        
+        
+        
+        
+    </form>
+
+
+
+</div>
+    
+</section>
+
+<script type="text/javascript">
+    
+      $(function(){
+          
+          //Datemask dd/mm/yyyy
+        $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
+        //Datemask2 mm/dd/yyyy
+        $("#datemask2").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
+        //Money Euro
+        $("[data-mask]").inputmask();
+          
+        // Replace the <textarea id="editor1"> with a CKEditor
+        // instance, using default configuration.
+        CKEDITOR.replace('company_description');
+        CKEDITOR.replace('job_education');
+        CKEDITOR.replace('job_description');
+        CKEDITOR.replace('job_requirement');
+        CKEDITOR.replace('job_experienced');
+       // CKEDITOR.replace('job_apply_instruction');
+        CKEDITOR.replace('compnay_address');
+        CKEDITOR.replace('other_information');
+        $(".textarea").wysihtml5();
+        
+        
+        //iCheck for checkbox and radio inputs
+        $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+          checkboxClass: 'icheckbox_minimal-blue',
+          radioClass: 'iradio_minimal-blue'
+        });
+        
+        CKEDITOR.replace('job_apply_instruction', {
+            customConfig: '/plugins/ckeditor/custom_config.js',
+            filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
+            filebrowserImageBrowseUrl: '/ckfinder/ckfinder.html',
+            filebrowserFlashBrowseUrl: '/ckfinder/ckfinder.html',
+            filebrowserUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload',
+            filebrowserImageUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload',
+            filebrowserFlashUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload'
+
+        });
+        
+        
+        CKEDITOR.replace('editor1', {
+            customConfig: '/plugins/ckeditor/custom_config.js',
+            filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
+            filebrowserImageBrowseUrl: '/ckfinder/ckfinder.html',
+            filebrowserFlashBrowseUrl: '/ckfinder/ckfinder.html',
+            filebrowserUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload',
+            filebrowserImageUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload',
+            filebrowserFlashUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload'
+
+        });
+        
+      });
+
+</script>

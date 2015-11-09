@@ -1,0 +1,170 @@
+<?php
+
+use Carbon\Carbon; ?>
+<?php
+//echo "<pre>";
+//print_r($event);exit;
+?>
+<div class="hidden-xs common_google_ads t1-position-ad">
+    <!-- /85406138/Chakri_Articles_T1_970x90 -->
+    <div id='div-gpt-ad-1444651027888-0'>
+        <script type='text/javascript'>
+            googletag.cmd.push(function() {
+                googletag.display('div-gpt-ad-1444651027888-0');
+            });
+        </script>
+    </div>
+</div>
+
+<div class="col-xs-12 col-sm-12 col-md-12 about_us_page_container special_page_for_ad">
+    <div class="col-xs-12 col-sm-7 col-md-7">
+        <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse event_menu">
+            <ul class="nav navbar-nav event_menu_a">
+                <li><a href="/event" id="act_evt" class="active_event">All Events</a></li>
+                <li><a href="/eventarchives">Events Archive</a></li>
+                <li><a href="/eventregistration">Online Registration </a></li>
+                <li><a href="/contact" target="_blank">Contact Us</a></li>
+            </ul>
+        </div> 
+
+        <div class="evt_dle">
+            <img src="<?php echo ($event[0]["event_logo"] != NULL) ? "/images/event/" . $event[0]["event_logo"] : "img/default.jpg"; ?>" class="img-responsive center-block" />
+        </div>
+
+        <div class="evt_dlt_name">
+            <h3> <?php echo $event[0]["event_title"]; ?></h3>
+        </div>
+
+        <div class="evt_dle">
+            <?php if ($event[0]["details"] != NULL) { ?>
+                <p><strong>Details</strong>
+                    <?php echo $event[0]["details"]; ?>
+                </p>
+            <?php } ?>
+            <?php if ($event[0]["benefits"] != NULL) { ?>
+                <p><strong>Objectives / Benefits</strong>
+                    <?php echo $event[0]["benefits"]; ?> 
+                </p>
+            <?php } ?>
+        </div>
+
+        <div class="evt_dle">
+            <h5><strong>Event Session</strong></h5>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <tr>
+                        <td width="95">Event Dates</td>
+                        <td width="195">
+                            <?php
+                            $dt = Carbon::createFromFormat('Y-m-d', $event[0]["event_date"]);
+                            echo $dt->toFormattedDateString()
+                            ?>
+
+                            <?php
+                            if (($event[0]["event_expire_date"]) != NULL && ($event[0]["event_expire_date"]) == "Nov 30, -0001 ") {
+                                $dt = Carbon::createFromFormat('Y-m-d', " to " . $event[0]["event_expire_date"]);
+                                echo $dt->toFormattedDateString();
+                            }
+                            ?>
+                        </td>
+                    </tr>
+                    <?php if ($event[0]["program_type"] != NULL) { ?>
+                        <tr>
+                            <td>Program Type</td>
+                            <td><?php echo $event[0]["program_type"]; ?></td>
+                        </tr>
+                    <?php } ?>
+                    <?php if ($event[0]["event_conduct_by"] != NULL) { ?>
+                        <tr>
+                            <td>Event Conduct By</td>
+                            <td><?php echo $event[0]["event_conduct_by"]; ?></td>
+                        </tr>
+                    <?php } ?>
+                    <?php if (($event[0]["lastRegiDate"]) != NULL && ($event[0]["lastRegiDate"]) == "Nov 30, -0001 ") { ?>
+                        <tr>
+                            <td>Last Registration Date</td>
+                            <td>
+                                <?php
+                                $dt = Carbon::createFromFormat('Y-m-d', $event[0]["lastRegiDate"]);
+                                echo $dt->toFormattedDateString();
+                                ?>
+                            </td>
+                        </tr>
+                    <?php } ?>
+                </table>
+            </div>
+        </div>
+
+        <?php
+//echo $event[0]['event_date'];
+        if ($event[0]['event_date'] >= date('Y-m-d')) {
+            ?>
+
+
+            <div class="col-xs-12 col-sm-7 col-md-7">
+                <a href="/eventregistration/<?php echo $event[0]['id']; ?>"<button class="btn btn-primary">Online Registration</button></a>
+            </div>
+            <?php
+        }
+        ?>  
+        <div class="clearfix"></div>
+
+        <div class="hidden-xs common_google_ads"> 
+            <!-- /85406138/Chakri_Articles_L1_650x250 -->
+            <div id='div-gpt-ad-1444719862461-0' style='height:250px; width:650px;'>
+                <script type='text/javascript'>
+                    googletag.cmd.push(function() {
+                        googletag.display('div-gpt-ad-1444719862461-0');
+                    });
+                </script>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+
+    </div>
+
+    <div class="col-md-5 about_right_ad_container pull-right">
+        <div class="hidden-xs common_google_ads no_top_margin">
+            <!-- /85406138/Chakri_Articles_R1_336x280 -->
+            <div id='div-gpt-ad-1444719776818-0' style='height:280px; width:336px;'>
+                <script type='text/javascript'>
+                    googletag.cmd.push(function() {
+                        googletag.display('div-gpt-ad-1444719776818-0');
+                    });
+                </script>
+            </div>
+
+        </div>
+
+        <div class="hidden-xs common_google_ads"> 
+            <!-- /85406138/Chakri_Articles_F1_300x600 -->
+            <div id='div-gpt-ad-1444719812009-0' style='height:600px; width:300px;'>
+                <script type='text/javascript'>
+                    googletag.cmd.push(function() {
+                        googletag.display('div-gpt-ad-1444719812009-0');
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>   
+
+
+
+</div>
+<style type="text/css">
+    .fieldset {
+        border: 1px groove #ddd !important;
+        padding: 0 1.4em 1.4em 1.4em !important;
+        margin: 0 0 1.5em 0 !important;
+        -webkit-box-shadow:  0px 0px 0px 0px #000;
+        box-shadow:  0px 0px 0px 0px #000;
+    }
+    .legend {
+        width:inherit; /* Or auto */
+        padding:0 10px; /* To give a bit of padding on the left and right */
+        border-bottom:none;
+        font-size: 15px;
+    }
+</style>

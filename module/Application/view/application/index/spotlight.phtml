@@ -1,0 +1,400 @@
+<?php echo $this->job['spotlight_job_content']; ?>
+
+<!--Apply job-->
+<?php
+if ($this->identity()) {
+    if (($this->identity()->user_type == 3) && ($this->job["online_cv_received"] != "")) {        
+        if ($this->job_status[0]["app_status"] == "apply") {
+            ?>
+            <div class="dtls_login_btn_container">
+                <a data-id="<?php echo $this->job['id']; ?>"  id="already_apply_job"  href="javascript:void(0);" class="btn btn-primary dtls_login" role="button">Apply</a>                    
+            </div>      
+            <?php
+        } else {
+            ?>
+            <div class="dtls_login_btn_container">
+                <a data-id="<?php echo $this->job['id']; ?>"  id="apply_job"  href="javascript:void(0);" class="btn btn-primary dtls_login" role="button">Apply</a>                    
+            </div>
+            <?php
+        }
+    }
+} else {
+    if ($this->job["online_cv_received"] != "") {
+        ?>
+        <div class="dtls_login_btn_container">
+            <a href="javascript:void(0);" data-type="apply" class="login_to_apply btn btn-primary dtls_login" role="button">Login to Apply</a>
+            <a href="/registration" class="btn btn-primary dtls_registar" role="button">Registrar and Apply</a>
+        </div>  
+        <?php
+    }
+}
+?>
+
+
+<!--Save job-->
+
+<?php
+if ($this->identity()) {
+    if (($this->identity()->user_type == 3)) {
+        if ($this->job_status[0]["app_status"] == "apply") {
+            ?>
+            <a data-type="save"  id="already_apply_job"  href="javascript:void(0);" title="Save this job">
+                <img src="<?php echo $this->basePath('/images/trans.png'); ?>" alt="saved jobs" class="dtls_saved_jobs_icon_saved">
+            </a>
+            <?php
+        } elseif ($this->job_status[0]["app_status"] == "save") {
+            ?>
+            <a data-type="save"  id="already_save_job"  href="javascript:void(0);" title="Save this job">
+                <img src="<?php echo $this->basePath('/images/trans.png'); ?>" alt="saved jobs" class="dtls_saved_jobs_icon_saved">
+            </a>
+            <?php
+        } else {
+            ?>
+            <a data-id="<?php echo $this->job['id']; ?>"  id="save_job" data-type="save" href="javascript:void(0);" title="Save this job">
+                <img src="<?php echo $this->basePath('/images/trans.png'); ?>" alt="saved jobs" id="save_jobs_img" class="dtls_saved_jobs_ic">
+            </a>
+            <?php
+        }
+    }
+} else {
+    ?>
+    <a data-id="<?php echo $this->job['id']; ?>" data-type="save"  class="login_to_apply" href="javascript:void(0);" title="Save this job">
+        <img src="<?php echo $this->basePath('/images/trans.png'); ?>" alt="saved jobs" id="save_jobs_img" class="dtls_saved_jobs_ic">
+    </a>
+    <?php
+}
+?>
+
+<!--    End of dtls_company_profile_container-->
+<?php if (!empty($this->job["email_cv_received"]) || !empty($this->job["hardcopy_cv_received"])) { ?>
+
+    <h2 class="apply_instruction">Apply Instructions:</h2>
+    <?php if (!empty($this->job["email_cv_received"])) { ?>        
+        <p>Please send your Resume (email): <a href="mailto:<?php echo $this->job["email_cv_received"]; ?>"><?php echo $this->job["email_cv_received"]; ?></a></p>
+    <?php } ?>
+
+    <?php if (!empty($this->job["hardcopy_cv_received"])) { ?>        
+        <p>For Hardcopy: <?php echo $this->job["hardcopy_cv_received"]; ?>  </p>
+    <?php } ?>     
+
+
+
+<?php } ?>
+
+
+<div id="loginBox" style="display: none;">
+    <form id="loginForm" method="post" class="form-horizontal">
+        <div id="error_message">
+
+        </div>
+
+        <div class="form-group">
+            <label class="col-xs-3 control-label">Username</label>
+            <div class="col-xs-5">
+                <input type="text" class="form-control" name="user_name" required />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-xs-3 control-label">Password</label>
+            <div class="col-xs-5">
+                <input type="password" class="form-control" name="password" required />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-xs-5 col-xs-offset-3">
+                <input type="hidden" value="<?php echo $this->job['id']; ?>" name="job_id"/>
+                <input id="job_type" type="hidden" value="" name="type" />
+                <button type="submit" class="btn btn-default">Login</button>
+                <button type="submit" class="btn btn-default back_button">Back</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div id="applyBox" style="display: none;">
+    <form id="afterLoginApplyJobForm" method="post" class="form-horizontal">        
+        <div class="form-group">
+            <label class="col-xs-3 control-label">Expected salary</label>
+            <div class="col-xs-5">
+                <input type="number" class="form-control" name="expected_salary" required />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-xs-3 control-label">Select your cv</label>
+            <div class="col-xs-5">
+                <select name="cv_id" required>
+                    <option value="">Select cv</option>
+                    <?php
+                    foreach ($chk_cv as $val) {
+                        ?>
+                        <option value="<?php echo $val["id"]; ?>"><?php echo $val["resume_title"]; ?></option>
+                        <?php
+                    }
+                    ?>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-xs-5 col-xs-offset-3">
+                <input type="hidden" value="<?php echo $this->job['id']; ?>" name="id"/>
+                <input id="job_type" type="hidden" value="apply" name="type" />
+                <button class="btn btn-default after_login_apply" type="submit">Apply</button>
+                <button class="btn btn-default back_button" type="submit">Back</button>                
+            </div>
+        </div>
+    </form>
+</div> 
+
+<style type="text/css">
+.dtls_saved_jobs_ic {
+    background: rgba(0, 0, 0, 0) url("../images/icon-all.png") no-repeat scroll 0 -72px;
+    height: 16px;
+    width: 15px;
+}
+
+.dtls_saved_jobs_icon_saved {
+    background: rgba(0, 0, 0, 0) url("../images/icon-all.png") no-repeat scroll 0 -88px;
+    height: 16px;
+    width: 15px;
+}
+</style>
+
+<script src="<?php echo $this->basePath('js/jquery.min.js'); ?>"></script>
+<link rel="stylesheet" href="<?php echo $this->basePath('/bootstrap/css/bootstrap.min.css'); ?>">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+
+<script type="text/javascript">
+    $("body").on("click", "#save_job", function(e) {
+        e.preventDefault();
+        var job_id = $(this).attr("data-id");
+        bootbox.confirm("Are you sure want to save this job?", function(confirmed) {
+            //console.log("Confirmed: id " + edu_id);
+            // var edu_id = $(this).attr("data-id");
+            if (confirmed)
+            {
+                $.ajax({
+                    url: '/job/savejob',
+                    type: 'post',
+                    dataType: 'json',
+                    data: {id: job_id, type: 'save'},
+                    success: function(data) {
+                        //bootbox.alert(data.message);
+                        bootbox.alert({
+                            closeButton: false,
+                            title: "",
+                            message: data.message,
+                            callback: currentPageReload
+                        });
+                    }
+                });
+            }
+        });
+
+    });
+
+    $("body").on("click", "#apply_job", function(e) {
+
+
+        var type = $(this).attr("data-type");
+        $("#job_type").val(type);
+
+        // $('#login_to_apply').on('click', function() {
+        bootbox
+                .dialog({
+                    title: 'Please select your option.',
+                    message: $('#applyBox'),
+                    show: false // We will show it manually later
+                })
+                .on('shown.bs.modal', function() {
+                    $('#applyBox')
+                            .show();                             // Show the login form
+                    //.formValidation('resetForm', true); // Reset form
+                })
+                .on('hide.bs.modal', function(e) {
+                    // Bootbox will remove the modal (including the body which contains the login form)
+                    // after hiding the modal
+                    // Therefor, we need to backup the form
+                    $('#applyBox').hide().appendTo('body');
+                })
+                .modal('show');
+    });
+
+    $("body").on("submit", "#afterLoginApplyJobForm", function(e) {
+        e.preventDefault();
+        $.ajax({
+            url: '/job/savejob',
+            type: 'post',
+            dataType: 'json',
+            data: $('#afterLoginApplyJobForm').serialize(),
+            success: function(data) {
+                bootbox.hideAll();
+                //bootbox.alert(data.message);
+                bootbox.alert({
+                    closeButton: false,
+                    title: "",
+                    message: data.message,
+                    callback: currentPageReload
+                });
+            }
+        });
+
+    });
+
+
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        // Login button click handler
+        $("body").on("click", ".login_to_apply", function(e) {
+
+            var type = $(this).attr("data-type");
+            $("#job_type").val(type);
+
+
+            bootbox.dialog({
+                closeButton: false,
+                title: 'Login',
+                message: $('#loginBox'),
+                show: false // We will show it manually later
+            })
+                    .on('shown.bs.modal', function() {
+                        $('#loginBox')
+                                .show(); // Show the login form
+                        //.formValidation('resetForm', true); // Reset form
+                    })
+                    .on('hide.bs.modal', function(e) {
+                        $('#loginBox').hide().appendTo('body');
+                    })
+                    .modal('show');
+
+        });
+
+        // login button submit     
+        $("body").on("submit", "#loginForm", function(e) {
+            e.preventDefault();
+            var job_id = $(this).attr("data-id");
+            //console.log($(this).serialize());
+            $.ajax({
+                url: '/chkapi/user/login',
+                type: 'post',
+                dataType: 'json',
+                data: $('#loginForm').serialize(),
+                success: function(data) {
+                    //...do something with the data...
+                    if (data.success == 1)
+                    {
+
+                        if (data.status == "already_apply")
+                        {
+                            bootbox.hideAll();
+                            bootbox.alert({
+                                closeButton: false,
+                                title: "",
+                                message: "You alredy apply this job.",
+                                callback: currentPageReload
+                            });
+                        }
+                        else if (data.status == "already_save")
+                        {
+                            bootbox.hideAll();
+                            bootbox.alert({
+                                closeButton: false,
+                                title: "",
+                                message: "You alredy save this job",
+                                callback: currentPageReload
+                            });
+                        }
+                        else if (data.status == "insert_apply" || data.status == "update_apply")
+                        {
+                            $('.modal-title').html('<div style="color:#3c763d;font-seze:15px;">Successfully login. Please select your option.</div>');
+                            $('#loginBox').html(data.apply_form);
+                        }
+                        else if (data.status == "insert_save")
+                        {
+                            bootbox.hideAll();
+                            bootbox.alert({
+                                closeButton: false,
+                                title: "",
+                                message: "Succefully save your job",
+                                callback: currentPageReload
+                            });
+                        }
+
+                    }
+                    else
+                    {
+                        $('#error_message').html('<div class="alert alert-danger">' + data.err_msgs + "<div>");
+                    }
+                }
+            });
+
+        });
+
+        //For applay job
+        $("body").on("submit", "#applyJobForm", function(e) {
+
+            e.preventDefault();
+            //console.log($(this).serialize());
+            $.ajax({
+                url: '/job/savejob',
+                type: 'post',
+                dataType: 'json',
+                data: $('#applyJobForm').serialize(),
+                success: function(data) {
+                    bootbox.hideAll();
+                    bootbox.alert({
+                        closeButton: false,
+                        title: "",
+                        message: data.message,
+                        callback: currentPageReload
+                    });
+
+                }
+            });
+
+        });
+
+
+        $("body").on("click", "#already_apply_job", function(e) {
+            e.preventDefault();
+            bootbox.alert("Already applied for this job.");
+        });
+
+        $("body").on("click", "#already_save_job", function(e) {
+            e.preventDefault();
+            bootbox.alert("Already saved this job.");
+
+        });
+    });
+
+    $("body").on("click", ".back_button", function(e) {
+        bootbox.hideAll();
+        location.reload();
+    });
+
+
+    $("body").on("click", ".close_button", function(e) {
+        bootbox.hideAll();
+    });
+
+    function currentPageReload() {
+
+        location.reload();
+    }
+
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.login_to_apply img').on('click', function() {
+            $(this).attr('src', '/images/dtls_saved_jobs_icon_saved.png');
+        });
+    });
+</script>
+

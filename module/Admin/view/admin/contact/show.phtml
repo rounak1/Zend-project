@@ -1,0 +1,94 @@
+<div class="col-xs-12 col-sm-12 col-md-12 about_us_page_container">
+    <div class="col-xs-12 col-sm-8 col-md-8">
+        <div class="contact_form_container">
+            <form role="form" data-toggle="validator" class="form-horizontal" method="post">
+<?php       if($this->flashMessenger()->hasCurrentErrorMessages()){?>
+                <div class="box box-solid alert-error">
+                    <div class="box-tools pull-right">
+                        <button data-widget="remove" class="btn btn-box-tool text-gray"><i class="fa fa-times"></i></button>
+                    </div>
+                    <div class="box-body"><?php echo $this->flashMessenger()->render('error');?></div>
+                </div>
+<?php
+            }
+            if($this->flashMessenger()->hasCurrentSuccessMessages()){
+?>
+                <div class="box box-solid alert-error">
+                    <div class="box-tools pull-right">
+                        <button data-widget="remove" class="btn btn-box-tool text-gray"><i class="fa fa-times"></i></button>
+                    </div>
+                    <div class="box-body"><?php echo $this->flashMessenger()->render('success');?></div>
+                </div>
+<?php       }?>
+                <div class="box box-default">
+                    <div class="box-body">
+                        <div>
+<?php                   if($this->contact['name']){?>
+                            <div class="form-group">
+                                <strong class="col-sm-3">Name:</strong>
+                                <div class="col-sm-9">
+                                    <span class="default_text"><?php echo $this->contact['name'];?></span>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+<?php
+                        }
+                        if($this->contact['email']){
+?>
+                            <div class="form-group">
+                                <strong class="col-sm-3">Email:</strong>
+                                <div class="col-sm-9">
+                                    <span class="default_text"><?php echo $this->contact['email'];?></span>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+<?php
+                        }
+                        if($this->contact['phone']){
+?>
+                            <div class="form-group">
+                                <strong class="col-sm-3">Phone No.:</strong>
+                                <div class="col-sm-9">
+                                    <span class="default_text"><?php echo $this->contact['phone'];?></span>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+<?php
+                        }
+                        if($this->contact['message']){
+?>
+                            <div class="form-group">
+                                <strong class="col-sm-3">Message:</strong>
+                                <div class="col-sm-9">
+                                    <span class="default_text"><?php echo $this->contact['message'];?></span>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+<?php
+                        }
+                        if($this->contact['issue']){
+?>
+                            <div class="form-group">
+                                <strong class="col-sm-3">Message Type:</strong>
+                                <div class="col-sm-9">
+                                    <span class="default_text"><?php echo $this->contact['issue'];?></span>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+<?php                   }?>
+                            <input type="hidden" name="view_status" value="1" />
+                            <div class="form-group">
+                                <div class="col-sm-3">
+<?php                           if($contact['view_status']==0){?>
+                                    <input type="submit" name="resolved" value="Resolve" class="btn btn-primary" />
+<?php                           }?>
+                                    <a class="btn btn-default" href="<?php echo $this->serverUrl()."/admin/contact";?>" role="button">Back</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

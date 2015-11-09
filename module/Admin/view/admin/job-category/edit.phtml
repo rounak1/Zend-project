@@ -1,0 +1,45 @@
+<div class="box box-primary">
+    
+    <div class="box-header">
+        <h1 class="page-heading border-bottom">Edit  Functional Category </h1>
+    </div><!-- /.box-header -->
+    <!-- form start -->
+    
+    <form data-toggle="validator" role="form" method="post" >
+        <div class="box-body">
+            <?php
+            if ($this->flashMessenger()->hasCurrentSuccessMessages()) {
+                ?>
+                <div class="box box-success box-solid alert-success">
+                    <div class="box-tools pull-right">
+                        <button data-widget="remove" class="btn btn-box-tool text-gray"><i class="fa fa-times"></i></button>                    
+                    </div><!-- /.box-tools -->
+
+                    <div class="box-body">
+                        <?php
+                        //$flashMessenger = $this->flashMessenger();
+                        //if ($flashMessenger->hasMessages()) {     
+                        echo $this->flashMessenger()
+                                ->setMessageOpenFormat('<strong>')
+                                ->setMessageCloseString('</strong>')
+                                ->render('success');
+                        //} 
+                        ?> 
+                    </div><!-- /.box-body -->
+                </div><!-- /.box -->
+                <?php
+            }
+            ?>
+            <div class="form-group">
+                <label for="jcat">Job Category</label>
+                <input type="name" name="jname" class="form-control" id="jcat" value="<?php echo $this->jcats->name; ?>" placeholder="Job Category" autofocus required>
+            </div>
+
+
+            <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Update</button>
+                <a class="btn btn-default" href="<?php echo $this->serverUrl()."/admin/jcategory";?>" role="button">Back</a>
+            </div>
+        </div>
+    </form>
+</div><!-- /.box -->

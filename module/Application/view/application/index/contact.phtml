@@ -1,0 +1,151 @@
+<div class="hidden-xs col-sm-12 col-md-12 common_google_ads t1-position-ad">
+    <div class="row">
+        <!-- /85406138/Chakri_Jobdetails_T1_970x90 -->
+        <div id='div-gpt-ad-1440660280027-0'>
+            <script type='text/javascript'>
+                googletag.cmd.push(function() {
+                    googletag.display('div-gpt-ad-1440660280027-0');
+                });
+            </script>
+        </div>
+        <!-- /85406138/Chakri_Jobdetails_T1_970x90 -->
+    </div>
+</div>
+
+<div class="col-xs-12 col-sm-12 col-md-12 about_us_page_container">
+
+    <div class="pagination_top_container">
+        <ul>
+            <li><a href="">Home</a></li>
+            <li>Contact us</li>           
+            <div class="clearfix"></div>
+        </ul>        
+    </div>
+
+    <div class="row">        
+        <div class="col-xs-12 col-sm-8 col-md-8">
+            <h2>Contact us</h2>
+            <p>We are here to answer any questions you may have about our chakri.com experiences.
+                Reach out to us and we'll respond as soon as we can.</p>
+
+            <p>Even if there is something you have always wanted to experience and can't find 
+                it on chakri.com, let us know and we promise we'll do our best to find it for you and
+                send you there.</p>
+
+            <div class="contact_form_container">
+                <form role="form" data-toggle="validator" class="form-horizontal" method="post">
+                    <?php if ($this->flashMessenger()->hasCurrentSuccessMessages()) { ?>
+                        <div class="alert alert-success alert-dismissable col-xs-12 col-sm-10 col-md-12" style="font-size: 17px;">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <?php echo strip_tags($this->flashMessenger()->render('success', array('alert', 'alert-dismissable', 'alert-success'))); ?>
+                        </div>
+                        <?php
+                    }
+                    if ($this->flashMessenger()->hasCurrentErrorMessages()) {
+                        ?>
+                        <div class="box box-danger box-solid alert alert-danger alert-dismissable col-xs-12 col-sm-10 col-md-12" style="font-size: 17px;">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <?php echo strip_tags($this->flashMessenger()->render('error', array('alert', 'alert-dismissable', 'alert-success'))); ?>
+                        </div>
+                    <?php } ?>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <label for="name">Name <span class="validation_star">*</span></label>
+                            <input type="text" name="name" value="<?php echo ($post_data['name']) ? $post_data['name'] : ""; ?>" id="name" class="form-control" placeholder="Name" required>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <label for="email">Email <span class="validation_star">*</span></label>
+                            <input type="email" id="email" name="email" value="<?php echo ($post_data['email']) ? $post_data['email'] : ""; ?>" class="form-control" placeholder="Email" required>
+                            <div id="email-check"></div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <label for="phone">Phone No.</label>
+                            <input type="tel" id="phone" name="phone" value="<?php echo ($post_data['phone']) ? $post_data['phone'] : ""; ?>" class="form-control" placeholder="Phone No." />
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <label for="message">Message <span class="validation_star">*</span></label>
+                            <textarea id="message" name="message" class="form-control contact_textarea" rows="3" placeholder="Message" required><?php echo ($post_data['message']) ? $post_data['message'] : ""; ?></textarea>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <label for="message">Issues <span class="validation_star">*</span></label>
+                            <select class="form-control" name="issue" required>
+                                <option value="" selected>Select Issues</option>
+                                <option <?php echo ($post_data['issue'] == "Resume Related") ? "selected" : ""; ?> value="Resume Related">Resume Related</option>
+                                <option <?php echo ($post_data['issue'] == "Job Related") ? "selected" : ""; ?> value="Job Related">Job Related</option>
+                                <option <?php echo ($post_data['issue'] == "Profile Related") ? "selected" : ""; ?> value="Profile Related">Profile Related</option>
+                                <option <?php echo ($post_data['issue'] == "Others") ? "selected" : ""; ?> value="Others">Others</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <!-- <div class="col-xs-12 col-sm-12 col-md-12">
+                         <div class="form-group">
+                             <label for="inputEmail3" class="col-sm-4 col-md-4 col-lg-4 control-label">&nbsp;</label>
+                             <div class="col-sm-7 col-md-7 col-lg-7">
+                                 <div required class="g-recaptcha" data-sitekey="6LcXBAcTAAAAAK_KSs6jYpPXLi0Ke-P9EW11xvK1"></div>
+     
+                             </div>
+                         </div>
+                     </div> -->
+                    <!--<div class="col-xs-12 col-sm-12 col-md-12 no_padding_left no_right_padding">
+                        <div class="form-group">
+                            <label for="Vacancies">How much is 1+6? <span class="validation_star">*</span></label>
+                            <input type="text" class="form-control"  placeholder="How much is 1+6?">
+                        </div>
+                    </div>-->
+                    <div class="col-xs-12 col-sm-12 col-md-12 pull-left">
+                        <div class="form-group">                   
+                            <input type="submit" class="btn btn-primary contact_btn" value="Send" />
+                        </div>
+                    </div>                
+                </form>
+            </div>
+
+
+        </div>
+
+
+        <div class="col-xs-12 col-sm-4 col-md-4 about_us_right_container">
+            <div class="contact_us_right">
+
+                <p class="heading">Contact Sales Team</p>
+                <p>For pre-sales questions or concerns, please call us or send us an email.</p>
+                <p><b>Mobile: </b><br />01922626056, 01674894347, 01614331126,
+                    01916832507, 01719984925, 01878694674 and 01847175240 </p>
+
+                <p> <b>Tel: </b><br />(8802) 9883552, 9883547, 9883549-50 </p>
+
+                <p><b>Email: </b><br /> <a href="mailto:sales@chakri.com" target="_blank">sales@chakri.com</a> <br /> 
+                    <a href="mailto:info@chakri.com" target="_blank">info@chakri.com</a></p>
+
+
+
+                <p class="heading">Contact Workshop Team</p>
+                <p>For Seat Booking &amp; Registration, please call us or send us an email. </p>
+
+                <p><b>Mobile: </b><br /> 01678 660819 or  01678 660820 (10.00 AM to 6.00 PM)</p>
+
+                <p><b>Tel: </b><br />(8802) 9883552, 9883547, 9883549-50 </p>
+
+                <p><b>Email: </b><br /><a href="mailto:workshop@chakri.com" target="_blank"> workshop@chakri.com</a></p>
+
+
+                <p class="heading">Technical Support</p>
+                <p><b>Mobile: </b> <br />
+                    01674894347, 01713129670 and 01922626056 </p>
+                <p><b>Tel: </b> <br /> (8802) 9883552, 9883547, 9883549-50 </p>
+                <p><b>Email: </b><br /><a href="mailto:service@chakri.com" target="_blank">service@chakri.com</a></p>
+            </div>
+        </div>
+    </div>
+</div>

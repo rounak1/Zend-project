@@ -1,0 +1,65 @@
+<section class="content">
+    <div class="box box-primary">
+        <div class="box-header">
+            <h1 class="page-heading border-bottom">Add Business Type</h1>
+        </div><!-- /.box-header -->
+        <!-- form start -->
+        <form data-toggle="validator" role="form" method="post" >
+            <div class="box-body">
+<?php       if(count($error_messages)){?>
+                <div class="box box-solid alert-error">
+                    <div class="box-tools pull-right">
+                        <button data-widget="remove" class="btn btn-box-tool text-gray"><i class="fa fa-times"></i></button>                    
+                    </div>
+                    <div class="box-body">
+<?php
+                    foreach($error_messages as $msg)
+                        echo $msg;
+?>
+                    </div>
+                </div>
+<?php       }?>
+                <div class="form-group">
+                    <label for="btype">Business Type</label> <span class="valid_star">*</span>
+                    <input type="text" name="bname" class="form-control" id="btype" value="<?php echo ($this->post_data->bname ? $this->post_data->bname : "");?>" placeholder="Buisness Type" autofocus required>
+                    <div id="btype-check"></div>
+                </div>
+
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Add</button>
+                    <a class="btn btn-default" href="<?php echo $this->serverUrl()."/admin/btype";?>" role="button">Back</a>
+                </div>
+
+            </div><!-- /.box -->
+        </form>
+    </div>
+</section>
+<script>
+    $(function(){
+        $("#btype").focusout(function(e){
+            var postData=$("#btype").val();
+            if(postData!==""){
+                var URL="/admin/btype/btypecheck";
+                $.ajax({
+                    url:URL,
+                    type:"POST",
+                    data:{btype:postData},
+                    success:function(data,textStatus,jqXHR){
+                        $("#btype-check").show();
+                        if(data.success){
+                            $("#btype-check").css("color","red");
+                            $("#btype-check").html("This Business Type already exists");
+                            e.preventDefault();
+                        }
+                        if(!data.success){
+                            $("#btype-check").css("color","green");
+                            $("#btype-check").html("Business Type available");
+                        }
+                    }
+                });
+                e.preventDefault();
+            }else
+                $("#btype-check").hide();
+        });
+    });
+</script>

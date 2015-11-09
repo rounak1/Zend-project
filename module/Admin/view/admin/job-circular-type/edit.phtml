@@ -1,0 +1,22 @@
+<section class="content">
+<div class="box box-primary">
+    <div class="box-header">
+        <h1 class="page-heading border-bottom">Edit Job Circular Type</h1>
+    </div>
+    <!-- form start -->
+    <form data-toggle="validator" role="form" method="post" >
+        <div class="box-body">
+            <div class="form-group">
+                <label for="jcircular">Job Circular Type</label>
+                <input type="text" name="jsname" class="form-control" id="jcircular" value="<?php echo $this->circularTypes->type; ?>" placeholder="Job Circular type name" autofocus required>
+            </div>
+
+
+            <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Update</button>
+                <a class="btn btn-default" href="<?php echo $this->serverUrl()."/admin/circularType";?>" role="button">Back</a>
+            </div>
+        </div>
+    </form>
+</div><!-- /.box -->
+</section>

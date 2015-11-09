@@ -1,0 +1,27 @@
+<section class="content">
+    <div class="box box-primary">
+        <div class="box-header">
+            <h1 class="page-heading border-bottom">Add Permission</h1>
+        </div><!-- /.box-header -->
+        <!-- form start -->
+        <form data-toggle="validator" role="form" method="post" >
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="btype">Permission name</label>
+                    <input type="text" name="perm_name" class="form-control" id="perm_name" value="<?php echo ($this->post_data["perm_name"] != "") ? $this->post_data["perm_name"] : $this->results["perm_name"]; ?>" placeholder="Permission name" autofocus required>
+                </div>
+
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Add</button>
+                    <a class="btn btn-default" href="<?php echo $this->serverUrl()."/admin/role/permissions";?>" role="button">Back</a>
+                </div>
+
+            </div><!-- /.box -->
+        </form>
+    </div>
+</section>
+<script>
+    $('input').on('ifChecked', function(event){
+        alert(event.type + ' callback');
+});
+</script>

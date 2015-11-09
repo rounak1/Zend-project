@@ -1,0 +1,137 @@
+<section class="content"> 
+ <?php
+    if ($this->flashMessenger()->hasCurrentSuccessMessages()) {
+        ?>
+        <div class="box box-success box-solid alert-success">
+            <div class="box-tools pull-right">
+                <button data-widget="remove" class="btn btn-box-tool text-gray"><i class="fa fa-times"></i></button>                    
+            </div><!-- /.box-tools -->
+
+            <div class="box-body">
+                <?php
+                //$flashMessenger = $this->flashMessenger();
+                //if ($flashMessenger->hasMessages()) {     
+                echo $this->flashMessenger()
+                        ->setMessageOpenFormat('<strong>')
+                        ->setMessageCloseString('</strong>')
+                        ->render('success');
+                //} 
+                ?> 
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+        <?php
+    }
+    ?>   
+<div class="govt_job_ad_form_container box box-default admin_form_bg"> 
+    <form role="form" data-toggle="validator" class="form-horizontal register_employer_form" method="post" enctype="multipart/form-data">
+        <h1>Update Membership Services</h1>          
+
+             
+
+        <div class="clearfix"></div>
+
+        <div class="form-group">                 
+            <div class="col-sm-12 col-md-12">
+                <?php                                
+                $membership_service_id = $this->employer_profile[0]["membership_service_id"];
+                $membership_service = explode(",", $membership_service_id);               
+                
+                foreach($servicesList as $key => $val)
+                {
+                    ?>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" id="checkboxSuccess" name="membership_service_id[]" value="<?php echo $val["id"]; ?>" <?php echo (!isset($this->post_data["membership_service_id"]) && in_array($val["id"], $membership_service)) ? 'checked="checked"' : '' ?> <?php echo (isset($this->post_data["membership_service_id"]) && in_array($val["id"], $this->post_data["membership_service_id"])) ? 'checked="checked"' : '' ?> />
+                            <?php echo $val["name"];?>
+                        </label>
+                    </div>
+                    <?php
+                }
+                ?>
+                <div class="clearfix"></div>                    
+            </div>
+        </div>
+        
+        <?php
+        if($this->employer_profile[0]["membership_start_date"] == "0000-00-00")
+        {
+           $membership_start_date = "";
+        }
+        else
+        {
+            $membership_start_date = $this->employer_profile[0]["membership_start_date"];
+        }    
+        ?>
+
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 col-md-2 control-label">From Date:</label>
+            <div class="col-sm-5 col-md-5">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </div>
+                    <input type="text" name="membership_start_date" value="<?php echo ($this->post_data["membership_start_date"] != "") ? $this->post_data["membership_start_date"] : $membership_start_date; ?>" class="form-control" data-inputmask="'alias': 'yyyy-mm-dd'" data-mask/>
+                </div>                
+            </div>
+
+            <div class="clearfix"></div>
+        </div>
+        
+        
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 col-md-2 control-label">To Date:</label>
+            <div class="col-sm-5 col-md-5">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </div>
+                    <?php
+                    if($this->employer_profile[0]["membership_expire_date"] == "0000-00-00")
+                    {
+                       $membership_expire_date = "";
+                    }
+                    else
+                    {
+                        $membership_expire_date = $this->employer_profile[0]["membership_expire_date"];
+                    }    
+                    ?>
+                    <input type="text" name="membership_expire_date" value="<?php echo ($this->post_data["membership_expire_date"] != "") ? $this->post_data["membership_expire_date"] : $membership_expire_date; ?>" class="form-control" data-inputmask="'alias': 'yyyy-mm-dd'" data-mask/>
+                </div>                
+            </div>
+
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="form-group">
+            <div class=" col-xs-12 col-sm-6 col-md-6 col-sm-offset-2 col-md-offset-2 btn_submit">
+                <button type="submit" class="btn btn-primary pull-left">Submit</button>&nbsp;         
+                <a class="btn btn-default" href="<?php echo $this->serverUrl()."/admin/company"; ?>" role="button">Back</a>
+            </div>                                            
+        </div>     
+
+        <div class="clearfix"></div>
+
+    </form>
+</div>    
+</section>
+ <div class="clearfix"></div>
+<script type="text/javascript">
+
+  $(function(){
+
+      //Datemask dd/mm/yyyy
+    $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
+    //Datemask2 mm/dd/yyyy
+    $("#datemask2").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
+    //Money Euro
+    $("[data-mask]").inputmask();
+
+    //iCheck for checkbox and radio inputs
+    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+      checkboxClass: 'icheckbox_minimal-blue',
+      radioClass: 'iradio_minimal-blue'
+    });     
+
+  });
+
+</script>
